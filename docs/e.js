@@ -208,14 +208,15 @@ async function quote() {
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
 	_amt = (_inc * _ts) / _base;
-	_tlw = (Number(qd[1].end)/86400/7).toFixed();
+	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	$("nft-amt").innerHTML = fornum(qd[3],18)
-	$("nft-tl").innerHTML = `${ Number(fornum(_inc,18)) } ${BASENAME} locked for ${_tlw} Weeks`;
-	$("nft-offer").innerHTML = fornum(_amt,18) + " " + WRAPNAME;
+	$("nft-tl").innerHTML = `${ Number(fornum(_inc,18)) } ${BASENAME}, locked for ${_tlw} Weeks`;
+	$("nft-offer").innerHTML = fornum(_amt,18);
 	$("claim-offer").innerHTML = "Get "+ fornum(_amt,18) + " " + WRAPNAME;
 }
 
 async function sell() {
+	cw();
 	_id = $("nft-sel").value;
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
