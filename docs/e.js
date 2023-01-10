@@ -224,7 +224,7 @@ async function sell() {
 	if(al==false) {
 		notice(`
 			<h3>Approval required</h3>
-			VeNAMM requires your approval to complete this conversion.<br><br>
+			eTHENA Depositor requires your approval to complete this conversion.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
 		let _tr = await ve.approve(VENAMM,_id);
@@ -253,7 +253,7 @@ async function sell() {
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
 	_amt = _inc * _ts / _base;
-	_tlw = (Number(qd[1].end)/86400/7).toFixed();
+	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	_q = [
 		_amt,
 		_inc,

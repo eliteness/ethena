@@ -408,3 +408,8 @@ textarea:focus, input:focus {
 	color: #001;
 	text-decoration: none
 }
+
+#social a img {
+  height: 24px;
+  margin:4px 4px 4px 0;
+}
