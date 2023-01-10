@@ -48,7 +48,7 @@ h1, h2 {
 }
 
 h1 span, h2 span {
-	background: -webkit-linear-gradient(top,  #f07 40%, #90f);
+	background: -webkit-linear-gradient(top,	#f07 40%, #90f);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -68,8 +68,15 @@ h2 {
 .mechanism {
 	width: 75%;
 	position: relative;
+	/*
+	background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
+	background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
+	background: linear-gradient(266.44deg, #01011b, #001337);
+	border-radius: 25px;
+	*/
 	background:#090333;
 	border: 1px solid #ed00c9;
+	border-radius: 25px;
 	margin: 25px auto;
 	padding: 15px;
 	position: relative;
@@ -158,10 +165,16 @@ textarea:focus, input:focus {
 
 .mechanism:before {
 	content: "";
+	border-radius: 25px;
 	position: absolute;
-    -webkit-animation: gradient 2s ease infinite;
-    animation: gradient 2s ease infinite;
-    box-shadow: 0 0 50px #48003d;
+	/*
+	background: -webkit-linear-gradient(183.56deg, #28edec, #0564d7);
+	background: -moz-linear-gradient(183.56deg, #28edec 0, #0564d7 100%);
+	background: linear-gradient(266.44deg, #28edec, #0564d7);
+	*/
+	-webkit-animation: gradient 2s ease infinite;
+	animation: gradient 2s ease infinite;
+	box-shadow: 0 0 50px #48003d;
 	top: -1px;
 	left: -1px;
 	bottom: -1px;
@@ -185,8 +198,13 @@ textarea:focus, input:focus {
 
 .hr-nft {
 	border:none;
-	background: -webkit-linear-gradient(left, #f0a, #90f);
+	/*
+	background: -webkit-linear-gradient(183.56deg, #0564d7, #28edec);
+	background: -moz-linear-gradient(183.56deg, #0564d7 0, #28edec 100%);
+	background: linear-gradient(266.44deg, #0564d7, #28edec);
+	*/
 	height: 2px;
+	background: -webkit-linear-gradient(left, #f0a, #90f);
 }
 
 #p_cw{font-size:1em;font-family:light}
@@ -387,14 +405,14 @@ textarea:focus, input:focus {
 }
 
 
-
-
-
-/* Thena Fixes */
+/*
+ * Thena Fixes
+ * author: @jeffcryptoo
+ */
 
 .input-amount-els:last-of-type .nft-amt-nums{
 	margin-left:40px;
-	
+
 }
 
 #cw_og{
@@ -415,7 +433,7 @@ textarea:focus, input:focus {
 	animation:moving-grid 0.5s infinite linear;
 	z-index:-1;
   }
-  
+
   @keyframes moving-grid{
 	0%{
 	  transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
@@ -424,8 +442,8 @@ textarea:focus, input:focus {
 	  transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(var(--grid-size));
 	}
   }
-  
-  
+
+
   .sun{
 	width:200px;
 	height:200px;
@@ -444,10 +462,10 @@ textarea:focus, input:focus {
 	  -50% 92%,150% 92%,150% 95%,0 95%,
 	  -50% 96%,150% 96%,150% 150%,0 150%);
 	  box-shadow: rgba(255,128,0,0.7) 0px 0 20px;
-	  
+
   }
-  
-  
+
+
   .mountain{
 	position:absolute;
 	content:'';
@@ -460,7 +478,7 @@ textarea:focus, input:focus {
 	transform-origin:bottom;
 	transform:skewX(var(--mountain-tilt,0deg));
   }
-  
+
   .mountain:after{
 	content:'';
 	border-left:calc(var(--mountain-base) / 2) solid transparent;
@@ -472,7 +490,7 @@ textarea:focus, input:focus {
 	left:0;
 	top:0;
   }
-  
+
   .overlay{
 	width:100%;
 	height:100%;
@@ -483,9 +501,9 @@ textarea:focus, input:focus {
 	background-image: repeating-linear-gradient(rgba(0,0,0,0.3) 0,transparent 1px,transparent 2px,rgba(0,0,0,0.3) 3px);
 	pointer-events: none;
   }
-  
-  
-  
+
+
+
   .background-80s{
 	background: linear-gradient(to bottom, #010310 0,#0c1142 24%,#45125e 45%,#d53567 60%,#f0c3d9 65%,#0c1142 65%) fixed;
 	background-size:100% var(--background-height,100vh);
@@ -497,12 +515,12 @@ textarea:focus, input:focus {
 	height:var(--background-height,100vh);
 	z-index:-2;
   }
-  
-  
+
+
   .animated-clouds:before{
 	filter: url(#filter);
   }
-  
+
   .background-80s:before{
 	content:'';
 	background: linear-gradient(to bottom, #010310 0,#0c1142 24%,#45125e 45%,#d53567 60%,#f0c3d9 65%,#0c1142 65%) fixed;
@@ -514,7 +532,7 @@ textarea:focus, input:focus {
 	top:0;
 	opacity:0.2;
   }
-  
+
   /*stars*/
   .stars:after{
 	transform:translateY(-40%);
@@ -526,7 +544,7 @@ textarea:focus, input:focus {
 	left:0;
 	top:0;
 	z-index:-1;
-	box-shadow: 
+	box-shadow:
 	  5vw 15vh 2px white,
 	  1vw 33vh 0px white,
 	  2vw 25vh 2px white,
@@ -555,7 +573,7 @@ textarea:focus, input:focus {
 	opacity:0.3;
 	animation:glitter 2s infinite;
   }
-  
+
   @keyframes glitter{
 	0% {
 	  opacity:0.5;
@@ -563,12 +581,12 @@ textarea:focus, input:focus {
 	50% {
 	  opacity:0.9;
 	}
-	
+
 	100% {
 	  opacity:0.5;
 	}
   }
-  
+
   .text{
 	position:absolute;
 	left:50%;
@@ -578,21 +596,21 @@ textarea:focus, input:focus {
 	white-space:nowrap;
   }
   .outrun{
-	
+
 	font-family:'Road Rage';
 	font-weight:normal;
 	font-size: 50px;
   }
-  
+
   .glow {
-	
+
 	color: #fff;
 	text-align: center;
 	-webkit-animation: glow 1s ease-in-out infinite alternate;
 	-moz-animation: glow 1s ease-in-out infinite alternate;
 	animation: glow 1s ease-in-out infinite alternate;
   }
-  
+
   @-webkit-keyframes glow {
 	from {
 	  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
@@ -601,30 +619,30 @@ textarea:focus, input:focus {
 	  text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
 	}
   }
-  
-  
+
+
   .chrome{
 	font-family:"Montserrat";
 	font-weight:900;
 	font-size:calc(30px + 10vh);
 	background-image:linear-gradient(#2989cc 0%, #d3e5ec 50%,#592451 51%,#b3628d 55%,#592451 59%,#b3628d 65%,#ac86a6 75%, #b3628d 100%);
 	-webkit-background-clip:text;
-	-webkit-text-fill-color: transparent; 
+	-webkit-text-fill-color: transparent;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: rgba(255,255,255,0.4);
 	position:relative;
-	
-	
+
+
   }
-  
+
   .chrome:before{
 	content:attr(data-text);
-	text-shadow: -1px -1px 1px #2989cc,-2px -2px 1px #2989cc, -3px -3px 1px #2989cc, 1px 1px 1px #000, 0px -1px 2px #000, -1px -2px 2px #000, 0 0 5px rgba(255,255,255,1); 
+	text-shadow: -1px -1px 1px #2989cc,-2px -2px 1px #2989cc, -3px -3px 1px #2989cc, 1px 1px 1px #000, 0px -1px 2px #000, -1px -2px 2px #000, 0 0 5px rgba(255,255,255,1);
 	opacity:1;
 	position:absolute;
 	z-index:-1;
   }
-  
+
   .shine:after{
 	content:attr(data-text);
 	background-image:linear-gradient(225deg,transparent 53%,white 55%,transparent 58%);
@@ -639,14 +657,14 @@ textarea:focus, input:focus {
 	animation:shine 10s ease infinite;
 	animation-delay:var(--shine-delay,0s);
   }
-  
+
   @keyframes shine{
 	  0%{background-position:0% 51%}
 	  50%{background-position:100% 50%}
 	  100%{background-position:0% 51%}
   }
-  
-  
+
+
   .spark{
 	margin-top:calc( 4vh ) ;
 	margin-left:-0.3em;
@@ -661,12 +679,12 @@ textarea:focus, input:focus {
 	animation:blip 5s infinite;
 	animation-timing-function: ease-in-out;
   }
-  
-  
+
+
   .chrome:last-of-type .spark{
 	animation-delay:-2.5s;
   }
-  
+
   @-webkit-keyframes blip {
 	0% {transform: scale(0);}
 	5% {transform: scale(1.2) rotate(0deg);}
@@ -688,11 +706,11 @@ textarea:focus, input:focus {
 	transform:perspective(50vh) rotateX(60deg);
 	z-index:-1;
   }
-  
+
   .road:after {
 	content:'';
 	--grid-size:90px;
-	position:absolute;  
+	position:absolute;
 	margin-left: calc(50% - 10px /2 );
 	width: 10px;
 	height: 100%;
@@ -700,3 +718,5 @@ textarea:focus, input:focus {
 	background-image: repeating-linear-gradient(0deg, #a684cb 0%, #a684cb 10%, transparent 10%, transparent 20%);
 	animation:moving-grid 0.5s infinite linear;
   }
+
+
