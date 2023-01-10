@@ -17,8 +17,12 @@ body {
 }
 
 body {
-	background: url('img/bg.png')
+	/*background: url('img/bg.png')*/
 	/*background-color: #01011b;*/
+	background: url('img/bgypt.png');
+	background-repeat: none;
+	background-size: 100% 100vh;
+	background-attachment: fixed;
 }
 
 small {
