@@ -216,10 +216,10 @@ async function quote() {
 }
 
 async function sell() {
-	cw();
 	_id = $("nft-sel").value;
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
+	the=new ethers.Contract(WRAP,VEABI,provider);
 	al = await ve.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
@@ -243,9 +243,6 @@ async function sell() {
 			Please confirm the Trade at your wallet provider now.
 		`)
 	}
-	ve = new ethers.Contract(VENFT,VEABI,provider);
-	vm=new ethers.Contract(VENAMM,VMABI,signer);
-	the=new ethers.Contract(BASE,VEABI,provider);
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
