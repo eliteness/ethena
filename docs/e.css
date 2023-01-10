@@ -144,6 +144,14 @@ button.submit {
 	max-width: max-content;
 }
 
+.nft-amtl-desc {
+	font-family: light_italic;
+	font-size: 1em;
+}
+.nft-amtl-desc b {
+	font-family: regular_italic;
+}
+
 textarea:focus, input:focus {
 	outline: none;
 }
@@ -252,6 +260,14 @@ textarea:focus, input:focus {
 	.nft-amt-nums {
 		position: relative;
 		left: -20px
+	}
+
+	.nft-amtl-desc {
+		font-family: light_italic;
+		font-size: 2em;
+	}
+	.nft-amtl-desc b {
+		font-family: regular_italic;
 	}
 
 	.mechanism input, .nft-amtl {

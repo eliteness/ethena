@@ -208,10 +208,10 @@ async function quote() {
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
 	_amt = (_inc * _ts) / _base;
-	_tlw = (Number(qd[1].end)/86400/7).toFixed();
+	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	$("nft-amt").innerHTML = fornum(qd[3],18)
-	$("nft-tl").innerHTML = `${ Number(fornum(_inc,18)) } ${BASENAME} locked for ${_tlw} Weeks`;
-	$("nft-offer").innerHTML = fornum(_amt,18) + " " + WRAPNAME;
+	$("nft-tl").innerHTML = `${ Number(fornum(_inc,18)) } ${BASENAME}, locked for ${_tlw} Weeks`;
+	$("nft-offer").innerHTML = fornum(_amt,18);
 	$("claim-offer").innerHTML = "Get "+ fornum(_amt,18) + " " + WRAPNAME;
 }
 
@@ -219,6 +219,7 @@ async function sell() {
 	_id = $("nft-sel").value;
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
+	the=new ethers.Contract(WRAP,VEABI,provider);
 	al = await ve.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
@@ -242,9 +243,6 @@ async function sell() {
 			Please confirm the Trade at your wallet provider now.
 		`)
 	}
-	ve = new ethers.Contract(VENFT,VEABI,provider);
-	vm=new ethers.Contract(VENAMM,VMABI,signer);
-	the=new ethers.Contract(BASE,VEABI,provider);
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
