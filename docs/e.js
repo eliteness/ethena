@@ -84,7 +84,7 @@ function fornum(n,d)
 	else if(_n>1e9){n_=(_n/1e9).toFixed(3)+"B"}
 	else if(_n>1e6){n_=(_n/1e6).toFixed(3)+"M"}
 	else if(_n>1e3){n_=(_n/1e3).toFixed(3)+"K"}
-	else if(_n>1e1){n_=(_n/1e0).toFixed(5)+""}
+	else if(_n>1e0){n_=(_n/1e0).toFixed(5)+""}
 	else if(_n>0.0){n_=(_n/1e0).toFixed(8)+""}
 	return(n_);
 }
@@ -169,19 +169,19 @@ VEABI = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","
 VMABI = [{"inputs":[{"internalType":"address","name":"ve","type":"address"},{"internalType":"address","name":"e","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"","type":"address"},{"indexed":true,"internalType":"uint256","name":"","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"","type":"uint256"}],"name":"Deposit","type":"event"},{"inputs":[],"name":"ID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"converted","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"dao","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"eTHENA","outputs":[{"internalType":"contract IeTHENA","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"minted","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_t","type":"address"},{"internalType":"uint256","name":"_a","type":"uint256"}],"name":"rescue","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"d","type":"address"}],"name":"setDAO","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"setID","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"supplied","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"veTHE","outputs":[{"internalType":"contract IVotingEscrow","name":"","type":"address"}],"stateMutability":"view","type":"function"}]
 
 async function gubs() {
-	veq = new ethers.Contract(VENFT, VEABI, provider);
-	bal = await veq.balanceOf(window.ethereum.selectedAddress);
+	ve = new ethers.Contract(VENFT, VEABI, provider);
+	bal = await ve.balanceOf(window.ethereum.selectedAddress);
 	if (bal == 0) $("nft-bal").innerHTML = "No NFTs owned!";
 	else {
 	  $("nft-bal").innerHTML = "Balance: "+bal+" veNFT";
 	  nid=[];
 	  for(i=0;i<bal;i++) {
-	  	nid[i]=veq.tokenOfOwnerByIndex(window.ethereum.selectedAddress,i);
+	  	nid[i]=ve.tokenOfOwnerByIndex(window.ethereum.selectedAddress,i);
 	  }
 	  nids = await Promise.all(nid);
 	  balid = [];
 	  for(i=0;i<bal;i++) {
-	  	balid[i]=veq.locked(Number(nids[i]));
+	  	balid[i]=ve.locked(Number(nids[i]));
 	  }
 	  balids = await Promise.all(balid);
 	  $("nft-sel").innerHTML = '<option value="" selected>Choose a NFT</option>';
@@ -197,36 +197,36 @@ async function quote() {
 	_id = $("nft-sel").value;
 	ve = new ethers.Contract(VENFT,VEABI,provider);
 	vm=new ethers.Contract(VENAMM,VMABI,provider);
-	the=new ethers.Contract(BASE,VEABI,provider);
+	wrap=new ethers.Contract(WRAP,VEABI,provider);
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
-		the.totalSupply(),
+		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	])
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
-	_amt = _inc * _ts / _base;
+	_amt = (_inc * _ts) / _base;
 	_tlw = (Number(qd[1].end)/86400/7).toFixed();
-	$("nft-amt").innerHTML = fornum(qd[3],18) + " " + VENAME;
-	$("nft-tl").innerHTML = `${ Number(fornum(qd[1],18)) } ${BASENAME} locked for ${_tlw} Weeks`;
+	$("nft-amt").innerHTML = fornum(qd[3],18)
+	$("nft-tl").innerHTML = `${ Number(fornum(_inc,18)) } ${BASENAME} locked for ${_tlw} Weeks`;
 	$("nft-offer").innerHTML = fornum(_amt,18) + " " + WRAPNAME;
 	$("claim-offer").innerHTML = "Get "+ fornum(_amt,18) + " " + WRAPNAME;
 }
 
 async function sell() {
 	_id = $("nft-sel").value;
-	veq = new ethers.Contract(VENFT, VEABI, signer);
+	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
-	al = await veq.isApprovedOrOwner(VENAMM,_id);
+	al = await ve.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
 			<h3>Approval required</h3>
 			VeNAMM requires your approval to complete this conversion.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.approve(VENAMM,_id);
+		let _tr = await ve.approve(VENAMM,_id);
 		console.log(_tr)
 		notice(`
 			<h3>Submitting Approval Transction!</h3>
@@ -243,7 +243,7 @@ async function sell() {
 		`)
 	}
 	ve = new ethers.Contract(VENFT,VEABI,provider);
-	vm=new ethers.Contract(VENAMM,VMABI,provider);
+	vm=new ethers.Contract(VENAMM,VMABI,signer);
 	the=new ethers.Contract(BASE,VEABI,provider);
 	qd = await Promise.all([
 		ve.locked(ID),
