@@ -78,80 +78,15 @@
 	</div>
 
 
-	<div class="extra">
-		<br><br>
-		<h3>Powered by Guru Network</h3>
-		<!--
-		<small id="stats">
-		</small>
-		<h1><span></span></h1>
-		-->
-	</div>
-
-
-	<div class="background-80s animated-clouds stars" style="--background-height:100vh">
-		<div class="grid" style="--grid-color:rgba(115,59,139,0.7);--grid-size:30px;--grid-blur:1px;"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#b533b3;--mountain-offset:10vw;--mountain-tilt:-20deg"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#681e6b;--mountain-tilt:59deg;--mountain-offset:20vw;"></div>
-		<div class="mountain" style="--mountain-base:8vw;--mountain-height:4vw;--mountain-color1:#a684cb;--mountain-color2:#b533b3;--mountain-offset:20vw;--mountain-tilt:-20deg"></div>
-		<div class="mountain" style="--mountain-base:3vw;--mountain-height:4vw;--mountain-color1:#a684cb;--mountain-color2:#681e6b;--mountain-tilt:45deg;--mountain-offset:28vw;"></div>
-		<div class="mountain" style="--mountain-base:5vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#681e6b;--mountain-offset:-40vw;--mountain-tilt:-20deg"></div>
-		<div class="mountain" style="--mountain-base:5vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#b533b3;--mountain-tilt:33deg;--mountain-offset:-35vw;"></div>
-		<div class="mountain" style="--mountain-base:5vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#681e6b;--mountain-tilt:-62deg;--mountain-offset:-5vw;"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#2a025d;--mountain-tilt:-20deg"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:5vw;--mountain-color1:#a684cb;--mountain-color2:#150030;--mountain-tilt:59deg;--mountain-offset:10vw;"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:10vw;--mountain-color1:#a684cb;--mountain-color2:#150030;--mountain-tilt:-33deg;--mountain-offset:-30vw;"></div>
-		<div class="mountain" style="--mountain-base:10vw;--mountain-height:10vw;--mountain-color1:#a684cb;--mountain-color2:#2a025d;--mountain-offset:-20vw;--mountain-tilt:20deg"></div>
-		<div class="mountain" style="--mountain-base:3vw;--mountain-height:10vw;--mountain-color1:#a684cb;--mountain-color2:#681e6b;--mountain-tilt:45.5deg;--mountain-offset:-10vw;"></div>
-		<div class="road-off" ></div>
-		<div class="overlay"></div>
-	</div>
-	<svg width="0" height="0">
-		<filter id="filter">
-		<feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="10" id="fractalNoise"/>
-		<feDisplacementMap id="displacementMap" in="SourceGraphic" scale="120" />
-		</filter>
-		<animate
-			xlink:href="#displacementMap"
-			id="animclouds1"
-			begin="0; animclouds2.end"
-			attributeName="scale"
-			from="50"
-			to="180"
-			dur="3s"
-			fill="freeze"
-		/>
-		<animate
-			xlink:href="#displacementMap"
-			id="animclouds2"
-			begin="animclouds1.end"
-			attributeName="scale"
-			from="180"
-			to="50"
-			dur="3s"
-			fill="freeze"
-		/>
-		<animate
-				xlink:href="#fractalNoise"
-				id="animclouds3"
-				begin="0;animclouds4.end"
-				attributeName="baseFrequency"
-				from="0.03"
-				to="0.01"
-				dur="30s"
-				fill="freeze"
-		/>
-		<animate
-			xlink:href="#fractalNoise"
-			id="animclouds4"
-			begin="animclouds3.end"
-			attributeName="baseFrequency"
-			from="0.01"
-			to="0.03"
-			dur="30s"
-			fill="freeze"
-			/>
-	</svg>
+		<div class="extra">
+			<br><br>
+			<h3>Powered by Guru Network</h3>
+			<!--
+			<small id="stats">
+			</small>
+			<h1><span></span></h1>
+			-->
+		</div>
 
 
 
@@ -159,56 +94,52 @@
 
 
 <!-- IGNORE BELOW BLOCK : DEV LOGS -->
-	<div style="display:none">
-	<span id="cw_m"></span>
-	<div id="connect">
-		Please connect your web3 wallet.
-		<br><br>
-		<button onclick="cw()" id="btn-connect">Connect</button>
-	</div>
-	<div id="switch">
-		<b id="btn-switch" onclick="cw()">
-			<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
-			<span id="cw"></span>
-		</b>
-		<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
-		<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
+		<div style="display:none">
+		<span id="cw_m"></span>
+		<div id="connect">
+			Please connect your web3 wallet.
+			<br><br>
+			<button onclick="cw()" id="btn-connect">Connect</button>
+		</div>
+		<div id="switch">
+			<b id="btn-switch" onclick="cw()">
+				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
+				<span id="cw"></span>
+			</b>
+			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
+			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
+		</div>
 	</div>
 <!-- IGNORE ABOVE BLOCK : DEV LOGS -->
-	<!--
-	<div id="particle-container">
-		<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
-	</div>
-	-->
-	<div class="retro-container">
-	</div>
 
-
-	<script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
-	<!--
-	<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
-	<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
-	-->
-	<script src="e.js"></script>
-	<script>
-		CHAINID = 56;
-		RPC_URL = "https://rpc.ankr.com/bsc";
-		EXPLORE = "https://bsccan.com";
-		CHAIN_NAME = "Binance Smart Chain Mainnet";
-		VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
-		VENAME = "veTHE";
-		VENAMM = "0xdab2F3901ACfEdb96971a12D6aC1C6BB5673889e";
-		POOLID = "v0.1.3";
-		BASENAME = "THE";
-		BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
-		WRAP = "0xafbe3b8b0939a5538DE32f7752A78e08C8492295";
-		WRAPNAME = "eTHENA";
-		BASELOGO = "https://ftm.guru/icons/the.png";
-		TOKENNAME = "THE";
-		TOKEN = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
-		TOKENLOGO = "https://ftm.guru/icons/ethena.png";
-		WRAPLOGO = "https://ftm.guru/icons/ethena.png";
-		ID = 2714;
-	</script>
+		<div id="particle-container">
+			<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+		</div>
+			<script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
+			<!--
+			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
+			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
+			-->
+			<script src="e.js"></script>
+			<script>
+				CHAINID = 56;
+				RPC_URL = "https://rpc.ankr.com/bsc";
+				EXPLORE = "https://bsccan.com";
+				CHAIN_NAME = "Binance Smart Chain Mainnet";
+				VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
+				VENAME = "veTHE";
+				VENAMM = "0xdab2F3901ACfEdb96971a12D6aC1C6BB5673889e";
+				POOLID = "v0.1.3";
+				BASENAME = "THE";
+				BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
+				WRAP = "0xafbe3b8b0939a5538DE32f7752A78e08C8492295";
+				WRAPNAME = "eTHENA";
+				BASELOGO = "https://ftm.guru/icons/the.png";
+				TOKENNAME = "THE";
+				TOKEN = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
+				TOKENLOGO = "https://ftm.guru/icons/ethena.png";
+				WRAPLOGO = "https://ftm.guru/icons/ethena.png";
+				ID = 2714;
+			</script>
 	</body>
 </html>
