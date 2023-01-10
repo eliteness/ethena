@@ -17,12 +17,13 @@ body {
 }
 
 body {
-	/*background: url('img/bg.png')*/
-	/*background-color: #01011b;*/
-	background: url('img/bgypt.png');
+	/*background: url('img/bg.png')
+	background-color: #01011b;
 	background-repeat: none;
-	background-size: 100% 100vh;
+	background-size: 100% 100vh;*/
+	background: url('img/bgypt.png');
 	background-attachment: fixed;
+	background-position: cover;
 }
 
 small {
