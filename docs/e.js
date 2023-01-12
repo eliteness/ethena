@@ -204,6 +204,7 @@ async function quote() {
 		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	])
+	console.log("quote _qd",_qd);
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
@@ -264,10 +265,10 @@ async function sell() {
 		<b>Converting veNFT:</b><br>
 
 		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> NFT Token ID: <u>#<b>${_id}</b></u><br>
-		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> Amount Locked: <u>${fornum(_q[1],18)} ${BASENAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> Amount Locked: <u>${ (_q[1],18).toLocaleString() } ${BASENAME}</u><br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Get:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${fornum(_q[0],18)} ${WRAPNAME}</u><br><br><br><br>
+		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ (_q[0],18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await vm.deposit(_id);
@@ -275,9 +276,9 @@ async function sell() {
 	notice(`
 		<h3>Order Submitted!</h3>
 		<br><h4>Minting ${TOKENNAME}</h4>
-		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${fornum(_q[0],18)} ${WRAPNAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ (_q[0],18).toLocaleString() } ${WRAPNAME}</u><br>
 		<br><h4>Locking ${VENAME} (veNFT)</h4>
-		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${ (_q[1],18).toLocaleString() } ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait();

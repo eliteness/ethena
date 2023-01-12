@@ -245,85 +245,6 @@ textarea:focus, input:focus {
 }
 
 
-
-@media(min-width:641px) {
-
-	.mechanism {
-		width: 500px;
-	}
-
-	.mechanism .amount {
-		position: absolute;
-		right: 25px;
-		top: 15px;
-	}
-
-	.mechanism .input-amount img {
-		width: 40px;
-		display: inline;
-		vertical-align: middle;
-	}
-	.mechanism .input-amount img.bigthumb {
-		width: 80px;
-		display: inline;
-		vertical-align: middle;
-	}
-	.mechanism .input-amount img.bigthumb_sub {
-		width: 40px;
-		position: relative ;
-		left:-40px;
-		top:20px;
-	}
-
-	#nft-amt, #nft-offer {
-		font-size: 2.5em;
-		margin: 0;
-	}
-
-	.nft-amt-nums {
-		position: relative;
-		left: -20px
-	}
-
-	.nft-amtl-desc {
-		font-family: light_italic;
-		font-size: 2em;
-	}
-	.nft-amtl-desc b {
-		font-family: regular_italic;
-	}
-
-	.mechanism input, .nft-amtl {
-		background-color: transparent;
-		color: black;
-		width: 100%;
-		border: 0;
-		font-size: 1.5em;
-		color: white;
-	}
-	button.submit {
-		width: 80%;
-		margin-top: 50px;
-		padding: 10px;
-		font-size: 1em;
-	}
-
-	h1 {
-		margin-top: 100px;
-		font-size: 4em;
-	}
-
-	h2 {
-		font-size: 1.5em;
-	}
-
-
-
-}
-
-
-
-
 .overlay {
 	position: fixed;
 	top: 0;
@@ -413,3 +334,92 @@ textarea:focus, input:focus {
   height: 24px;
   margin:4px 4px 4px 0;
 }
+
+
+.prefill-num {
+	opacity: 0.5;
+	font-size: 0.5em !important;
+}
+
+
+@media(min-width:641px) {
+
+	.mechanism {
+		width: 500px;
+	}
+
+	.mechanism .amount {
+		position: absolute;
+		right: 25px;
+		top: 15px;
+	}
+
+	.mechanism .input-amount img {
+		width: 40px;
+		display: inline;
+		vertical-align: middle;
+	}
+	.mechanism .input-amount img.bigthumb {
+		width: 80px;
+		display: inline;
+		vertical-align: middle;
+	}
+	.mechanism .input-amount img.bigthumb_sub {
+		width: 40px;
+		position: relative ;
+		left:-40px;
+		top:20px;
+	}
+
+	#nft-amt, #nft-offer {
+		font-size: 2.5em;
+		margin: 0;
+	}
+
+	.nft-amt-nums {
+		position: relative;
+		left: -20px
+	}
+
+	.nft-amtl-desc {
+		font-family: light_italic;
+		font-size: 2em;
+	}
+	.nft-amtl-desc b {
+		font-family: regular_italic;
+	}
+
+	.mechanism input, .nft-amtl {
+		background-color: transparent;
+		color: black;
+		width: 100%;
+		border: 0;
+		font-size: 1.5em;
+		color: white;
+	}
+	button.submit {
+		width: 80%;
+		margin-top: 50px;
+		padding: 10px;
+		font-size: 1em;
+	}
+
+	h1 {
+		margin-top: 100px;
+		font-size: 4em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	.prefill-num {
+		opacity: 0.5;
+		font-size: 0.5em !important;
+	}
+
+
+}
+
+
+
