@@ -220,8 +220,7 @@ async function sell() {
 	_id = $("nft-sel").value;
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
-	the=new ethers.Contract(WRAP,VEABI,provider);
-	wrap=new ethers.Contract(WRAP,VEABI,provider);
+	wrap=new ethers.Contract(WRAP,VEABI,signer);
 	al = await ve.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
