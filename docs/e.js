@@ -221,8 +221,11 @@ async function sell() {
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
 	wrap=new ethers.Contract(WRAP,VEABI,signer);
-	al = await ve.isApprovedOrOwner(VENAMM,_id);
-	if(al==false) {
+	alvo = await Promise.all([
+		ve.isApprovedOrOwner(VENAMM,_id),
+		ve.voted(_id)
+	]);
+	if(alvo[0]==false) {
 		notice(`
 			<h3>Approval required</h3>
 			eTHENA Depositor requires your approval to complete this conversion.<br><br>
@@ -242,18 +245,40 @@ async function sell() {
 			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 			<br><br>
 			Please confirm the Trade at your wallet provider now.
-		`)
+		`);
 	}
-	ve = new ethers.Contract(VENFT,VEABI,provider);
-	vm=new ethers.Contract(VENAMM,VMABI,provider);
-	wrap=new ethers.Contract(WRAP,VEABI,provider);
+	if(alvo[1]==false) {
+		notice(`
+			<h3>Vote-Reset required</h3>
+			eTHENA Depositor requires your veNFT to be in a non-voted state to complete this conversion.<br>
+			Resetting your Votes..
+			<br><br>
+			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+		`);
+		voter = new ethers.Contract(VOTER, ["function reset(uint)"], signer);
+		let _tr = await voter.reset(_id);
+		console.log(_tr);
+		notice(`
+			<h3>Submitting Vote-Reset Transction!</h3>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
+		`);
+		_tw = await _tr.wait()
+		console.log(_tw)
+		notice(`
+			<h3>Vote-Reset Completed!</h3>
+			<br><br>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
+			<br><br>
+			Please confirm the Trade at your wallet provider now.
+		`);
+	}
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
 		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	]);
-	console.log("quoted: ",qd);
+	console.log("sell.quoted: ",qd);
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
@@ -269,7 +294,7 @@ async function sell() {
 		<b>Converting veNFT:</b><br>
 
 		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> NFT Token ID: <u>#<b>${_id}</b></u><br>
-		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> Amount Locked: <u>${ (_q[1],18).toLocaleString() } ${BASENAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> Amount Locked: <u>${ fornum(_q[1],18).toLocaleString() } ${BASENAME}</u><br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Get:</b><br>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ fornum(_q[0],18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
@@ -280,9 +305,9 @@ async function sell() {
 	notice(`
 		<h3>Order Submitted!</h3>
 		<br><h4>Minting ${TOKENNAME}</h4>
-		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ (_q[0],18).toLocaleString() } ${WRAPNAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ fornum(_q[0],18).toLocaleString() } ${WRAPNAME}</u><br>
 		<br><h4>Locking ${VENAME} (veNFT)</h4>
-		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${ (_q[1],18).toLocaleString() } ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${ fornum(_q[1],18).toLocaleString() } ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait();
