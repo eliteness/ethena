@@ -221,6 +221,7 @@ async function sell() {
 	ve = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
 	the=new ethers.Contract(WRAP,VEABI,provider);
+	wrap=new ethers.Contract(WRAP,VEABI,provider);
 	al = await ve.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
@@ -229,7 +230,7 @@ async function sell() {
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
 		let _tr = await ve.approve(VENAMM,_id);
-		console.log(_tr)
+		console.log(_tr);
 		notice(`
 			<h3>Submitting Approval Transction!</h3>
 			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
@@ -244,16 +245,20 @@ async function sell() {
 			Please confirm the Trade at your wallet provider now.
 		`)
 	}
+	ve = new ethers.Contract(VENFT,VEABI,provider);
+	vm=new ethers.Contract(VENAMM,VMABI,provider);
+	wrap=new ethers.Contract(WRAP,VEABI,provider);
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
-		the.totalSupply(),
+		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	]);
+	console.log("quoted: ",qd);
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
 	_ts = Number(qd[2]);
-	_amt = _inc * _ts / _base;
+	_amt = (_inc * _ts) / _base;
 	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	_q = [
 		_amt,
@@ -268,7 +273,7 @@ async function sell() {
 		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> Amount Locked: <u>${ (_q[1],18).toLocaleString() } ${BASENAME}</u><br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Get:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ (_q[0],18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
+		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> <u>${ fornum(_q[0],18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await vm.deposit(_id);
