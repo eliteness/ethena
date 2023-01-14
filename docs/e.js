@@ -225,6 +225,7 @@ async function sell() {
 		ve.isApprovedOrOwner(VENAMM,_id),
 		ve.voted(_id)
 	]);
+	console.log("alvo: ",alvo);
 	if(alvo[0]==false) {
 		notice(`
 			<h3>Approval required</h3>
@@ -247,7 +248,7 @@ async function sell() {
 			Please confirm the Trade at your wallet provider now.
 		`);
 	}
-	if(alvo[1]==false) {
+	if(alvo[1]==true) {
 		notice(`
 			<h3>Vote-Reset required</h3>
 			eTHENA Depositor requires your veNFT to be in a non-voted state to complete this conversion.<br>
