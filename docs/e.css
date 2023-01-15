@@ -16,6 +16,12 @@ body {
 	background: -webkit-linear-gradient(left, #f0a, #90f);
 }
 
+.equal-gradient-white {
+    background: -webkit-linear-gradient(left, #f0a, #90f) !important;
+    color: white !important;
+	font-family: ;
+}
+
 body {
 	/*background: url('img/bg.png')
 	background-color: #01011b;
@@ -123,6 +129,12 @@ button.submit {
 	position: relative ;
 	left:-20px;
 	top:10px;
+}
+.mechanism .input-amount img.bigthumb_sup {
+	width: 20px;
+	position: relative;
+	left: -32px;
+	top: -16px;
 }
 
 .mechanism .input-amount img {
@@ -370,6 +382,12 @@ textarea:focus, input:focus {
 		left:-40px;
 		top:20px;
 	}
+	.mechanism .input-amount img.bigthumb_sup {
+		width: 40px;
+		position: relative;
+		left: -64px;
+		top: -32px;
+}
 
 	#nft-amt, #nft-offer {
 		font-size: 2.5em;

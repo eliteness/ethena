@@ -251,7 +251,8 @@ async function sell() {
 	if(alvo[1]==true) {
 		notice(`
 			<h3>Vote-Reset required</h3>
-			eTHENA Depositor requires your veNFT to be in a non-voted state to complete this conversion.<br>
+			eTHENA Depositor requires your veNFT to be in a non-voted state to complete this conversion.
+			<br><br>
 			Resetting your Votes..
 			<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
@@ -260,7 +261,7 @@ async function sell() {
 		let _tr = await voter.reset(_id);
 		console.log(_tr);
 		notice(`
-			<h3>Submitting Vote-Reset Transction!</h3>
+			<h3>Submitting Vote-Reset Transaction!</h3>
 			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 		`);
 		_tw = await _tr.wait()

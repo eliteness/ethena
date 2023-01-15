@@ -10,32 +10,37 @@
 <link rel="stylesheet" href="e.css"/>
 	<body>
 		<div class="partnership">
-			<h1><span>Mint_ eTHENA </span></h1>
-			<h2>Convert Your Locked veTHE NFT into Liquid eTHENA Tokens</h2>
+			<h1><span>Stake_ eTHENA </span></h1>
+			<h2>Stake Your eTHENA anytime to start Earning BNB</h2>
 		</div>
 		<div class="mechanism">
 			<div class="amount">
 				<br>
 				<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
-				<div align="center">
-					<select class="equal-gradient" id="nft-sel" onchange="quote()">
-						<option value="" selected>Choose a NFT</option>
-					</select>
-				</div>
-				<p><span id="nft-bal">Balance: Loading..</span></p>
+				<!--
+				<p style="">
+					<br>
+					<span id="nft-bal" class="equal-gradient" style="border-radius: 100px;padding: 5px;margin: 5px;position: relative;bottom: 5px;">78,123,456 eTHENA</span>
+					<br>
+					<span style="font-family: light;">Available Balance</span>
+				</p>
+				-->
 			</div>
 			<div class="input-amount">
 				<br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/the.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg"/>
+						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png"/>
+						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-amt"><span class="prefill-num">Convert veNFTs of</span></span>
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;">
+						<br>
 						<div class="nft-amtl-desc">
-							Locked <b>veTHE</b>
+							Stake <b>eTHENA</b>
 						</div>
+						<span style="font-family: light_italic;">Available: </span>
+						<span style="font-family: ">??????</span>
 					</div>
 				</div>
 				<br>
@@ -43,27 +48,52 @@
 				<br><br>
 				<div class="hr-nft"></div>
 				<br><br>
+				<br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
+						<img class="bigthumb" src="img/bank.svg"/>
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 1;">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-offer"><span class="prefill-num">Earn BNB by staking</span></span>
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;">
+						<br>
 						<div class="nft-amtl-desc">
-							Liquid <b>eTHENA</b>
+							Withdraw <b>eTHENA</b>
 						</div>
+						<span style="font-family: light_italic;">Available: </span>
+						<span style="font-family: ">??????</span>
 					</div>
 				</div>
+				<br>
+				<span class="nft-amtl" id="nft-tl"></span>
+				<br><br>
+				<div class="input-amount-els">
+					<div>
+						<img class="bigthumb" src="https://ftm.guru/icons/bnb.svg"/>
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
+					</div>
+					<div class="nft-amt-nums">
+						<span class="light-in" style="margin: 0;">Total Earnings</span>
+						<br>
+						<div class="nft-amtl-desc">
+							<span id="total-earn" style="font-family: light_italic;">???.???</span>
+							<b>BNB</b>
+						</div>
+						<span style="font-family: light_italic;">Unclaimed: </span>
+						<span style="font-family: ">??????</span>
+					</div>
+				</div>
+				<br><br>
 			</div>
+			<!--
 			<div style="margin-top: -25px;" align="center">
 				<button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Select your veNFT</span></button>
 				<br><br>
-			</div>
+			</div>-->
 		</div>
 		<div class="analytics">
-			<a class="equal-gradient-white">Mint</a>
-			<a href="staking.html">Stake</a>
+			<a href="index.html">Mint</a>
+			<a class="equal-gradient-white"">Stake</a>
 			<a href="https://dune.com/eliteness/ethena" target="_blank">Dune</a>
 			<a href="https://www.thena.fi/swap" target="_blank">Trade</a>
 		</div>
