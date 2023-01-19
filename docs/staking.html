@@ -1,13 +1,12 @@
 <!doctype html>
 <html>
-<meta charset="UTF-8">
-<head>
-<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
-<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
-<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
-<link rel="stylesheet" href="e.css"/>
+	<meta charset="UTF-8">
+	<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
+	<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
+	<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
+	<link rel="stylesheet" href="e.css"/>
 	<body>
 		<div class="partnership">
 			<h1><span>Stake_ eTHENA </span></h1>
@@ -35,13 +34,13 @@
 						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<input class="light-in" placeholder="Enter Amount" style="margin: 0;">
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_d">
 						<br>
 						<div class="nft-amtl-desc">
 							Stake <b>eTHENA</b>
 						</div>
 						<span style="font-family: light_italic;">Available: </span>
-						<span style="font-family: ">??????</span>
+						<span style="font-family: " id="bal_lp">??????</span>
 					</div>
 				</div>
 				<br>
@@ -56,13 +55,13 @@
 						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 1;">
 					</div>
 					<div class="nft-amt-nums">
-						<input class="light-in" placeholder="Enter Amount" style="margin: 0;">
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_w">
 						<br>
 						<div class="nft-amtl-desc">
 							Withdraw <b>eTHENA</b>
 						</div>
 						<span style="font-family: light_italic;">Available: </span>
-						<span style="font-family: ">??????</span>
+						<span style="font-family: " id="bal_fa">??????</span>
 					</div>
 				</div>
 				<br>
@@ -77,11 +76,11 @@
 						<span class="light-in" style="margin: 0;">Total Earnings</span>
 						<br>
 						<div class="nft-amtl-desc">
-							<span id="total-earn" style="font-family: light_italic;">???.???</span>
+							<span id="total-earn" style="font-family: light_italic;" id="bal_tr0">???.???</span>
 							<b>BNB</b>
 						</div>
 						<span style="font-family: light_italic;">Unclaimed: </span>
-						<span style="font-family: ">??????</span>
+						<span style="font-family: " id="bal_r0">??????</span>
 					</div>
 				</div>
 				<br><br>
@@ -95,8 +94,9 @@
 		<div class="analytics">
 			<a href="index.html">Mint</a>
 			<a class="equal-gradient-white"">Stake</a>
-			<a href="https://dune.com/eliteness/ethena" target="_blank">Dune</a>
-			<a href="https://www.thena.fi/swap" target="_blank">Trade</a>
+			<a href="https://dune.com/eliteness/ethena" target="_blank">Analytics</a>
+			<a href="https://thena.fi/swap" target="_blank">Trade</a>
+			<a href="https://ftm.guru/rawdata/notes/ethena-introduction" target="_blank">Docs</a>
 		</div>
 
 
@@ -157,7 +157,7 @@
 			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
-			<script src="e.js"></script>
+			<script src="s.js"></script>
 			<script>
 				CHAINID = 56;
 				RPC_URL = "https://rpc.ankr.com/bsc";
@@ -176,8 +176,12 @@
 				TOKEN = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
 				TOKENLOGO = "https://ftm.guru/icons/ethena.png";
 				WRAPLOGO = "https://ftm.guru/icons/ethena.png";
+				FARM = "0x88c3211ed3220c08376a28a3ba7c67d7d4be7db1";
 				ID = 2714;
 				VOTER = "0x62Ee96e6365ab515Ec647C065c2707d1122d7b26"
+				TEARNED = ["0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"];
+				TEARNSYM = ["WBNB"];
+				TEARNIMG = ["https://ftm.guru/icons/bnb.svg"]
 			</script>
 	</body>
 </html>
