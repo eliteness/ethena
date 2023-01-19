@@ -235,7 +235,7 @@ async function sell() {
 		let _tr = await ve.approve(VENAMM,_id);
 		console.log(_tr);
 		notice(`
-			<h3>Submitting Approval Transction!</h3>
+			<h3>Submitting Approval Transaction!</h3>
 			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 		`);
 		_tw = await _tr.wait()
