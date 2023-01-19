@@ -43,7 +43,9 @@
 						<span style="font-family: " id="bal_lp">??????</span>
 					</div>
 				</div>
-				<br>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="deposit()"><span id="claim-offer">Deposit eTHENA</span></button>
+				</div>
 				<span class="nft-amtl" id="nft-tl"></span>
 				<br><br>
 				<div class="hr-nft"></div>
@@ -52,7 +54,7 @@
 				<div class="input-amount-els">
 					<div>
 						<img class="bigthumb" src="img/bank.svg"/>
-						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 1;">
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
 						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_w">
@@ -63,6 +65,9 @@
 						<span style="font-family: light_italic;">Available: </span>
 						<span style="font-family: " id="bal_fa">??????</span>
 					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="withdraw()"><span id="claim-offer">Withdraw eTHENA</span></button>
 				</div>
 				<br>
 				<span class="nft-amtl" id="nft-tl"></span>
@@ -82,6 +87,9 @@
 						<span style="font-family: light_italic;">Unclaimed: </span>
 						<span style="font-family: " id="bal_r0">??????</span>
 					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="claim()"><span id="claim-offer">Claim Rewards</span></button>
 				</div>
 				<br><br>
 			</div>
