@@ -173,7 +173,7 @@ FARABI = [{"inputs":[{"internalType":"address","name":"_stakingToken","type":"ad
 
 function arf(){	var xfr = setInterval(function() {
 	console.log("refreshing farm stats", Date.now());
-	if(ethers.utils.isAddress(window.ethereum.selectedAddress) {gubs();}
+	if( ethers.utils.isAddress(window.ethereum.selectedAddress) ) {gubs();}
 }, 15000);}
 
 async function gubs() {
