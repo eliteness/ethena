@@ -185,12 +185,16 @@ async function gubs() {
 		lp.balanceOf(window.ethereum.selectedAddress),
 		fa.balanceOf(window.ethereum.selectedAddress),
 		fa.earned(TEARNED[0],window.ethereum.selectedAddress),
-		fa.earnings(TEARNED[0],window.ethereum.selectedAddress)
+		fa.earnings(TEARNED[0],window.ethereum.selectedAddress),
+		fa.tvl(),
+		fa.apr()
 	])
 	$("bal_lp").innerHTML = (bal[0]/1e18).toFixed(8);
 	$("bal_fa").innerHTML = (bal[1]/1e18).toFixed(8);
 	$("bal_r0").innerHTML = (bal[2]/1e18).toFixed(8);
 	$("bal_tr0").innerHTML = (bal[3]/1e18).toFixed(8);
+	$("bal_tvl").innerHTML = fornum(bal[4],18);
+	$("bal_apr").innerHTML = fornum(bal[5],18);
 }
 
 async function deposit() {
@@ -229,7 +233,7 @@ async function deposit() {
 	notice(`
 		<h3>Staking ${WRAPNAME}</h3>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}">
-		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
+		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await fa.stake(amt);
@@ -245,7 +249,7 @@ async function deposit() {
 		<h3>Deposit Successful!</h3>
 		<br>Amount Staked:<br>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}">
-		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
+		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 }
@@ -263,7 +267,7 @@ async function withdraw() {
 	notice(`
 		<h3>Withdrawing ${WRAPNAME}</h3>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}">
-		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
+		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await fa.withdraw(amt);
@@ -279,7 +283,7 @@ async function withdraw() {
 		<h3>eTHENA Received!</h3>
 		<br>Amount Unstaked:<br>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}">
-		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br><br><br>
+		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 }
@@ -288,7 +292,7 @@ async function claim() {
 	notice(`
 		<h3>Claiming Rewards!</h3>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await fa.withdraw(amt);
@@ -296,7 +300,7 @@ async function claim() {
 	notice(`
 		<h3>Rewards are on their way!</h3>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
 		We hope your enjoy staking with us!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
@@ -306,7 +310,7 @@ async function claim() {
 		<h3>Rewards Credited!</h3>
 		<br><br>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 }

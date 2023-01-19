@@ -176,6 +176,16 @@ button.submit {
 	font-family: regular_italic;
 }
 
+.earn-stats {
+	display: grid;
+	grid-template-columns: auto;
+	text-align: center;
+}
+
+ #bal_tvl, #bal_apr{
+	text-decoration: 2px dotted underline aqua;
+}
+
 textarea:focus, input:focus {
 	outline: none;
 }
@@ -234,6 +244,7 @@ textarea:focus, input:focus {
 #cw_og {
 	text-decoration: 2px underline aqua;
 }
+
 #cw_og {
 	border-radius: 5px;
 	padding: 5px;
@@ -403,9 +414,15 @@ textarea:focus, input:focus {
 		font-family: light_italic;
 		font-size: 2em;
 	}
+
 	.nft-amtl-desc b {
 		font-family: regular_italic;
 	}
+
+	.earn-stats {
+		grid-template-columns: auto auto;
+	}
+
 
 	.mechanism input, .nft-amtl {
 		background-color: transparent;
@@ -438,6 +455,3 @@ textarea:focus, input:focus {
 
 
 }
-
-
-
