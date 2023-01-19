@@ -187,14 +187,14 @@ async function gubs() {
 		fa.earned(TEARNED[0],window.ethereum.selectedAddress),
 		fa.earnings(TEARNED[0],window.ethereum.selectedAddress),
 		fa.tvl(),
-		fa.apr()
+		fa.aprs()
 	])
 	$("bal_lp").innerHTML = (bal[0]/1e18).toFixed(8);
 	$("bal_fa").innerHTML = (bal[1]/1e18).toFixed(8);
 	$("bal_r0").innerHTML = (bal[2]/1e18).toFixed(8);
 	$("bal_tr0").innerHTML = (bal[3]/1e18).toFixed(8);
 	$("bal_tvl").innerHTML = fornum(bal[4],18);
-	$("bal_apr").innerHTML = fornum(bal[5],18);
+	$("bal_apr").innerHTML = fornum(bal[5][0],18);
 }
 
 async function deposit() {
