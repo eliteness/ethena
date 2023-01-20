@@ -87,7 +87,7 @@ function fornum(n,d)
 	else if(_n>1e9){n_=(_n/1e9).toFixed(3)+"B"}
 	else if(_n>1e6){n_=(_n/1e6).toFixed(3)+"M"}
 	else if(_n>1e3){n_=(_n/1e3).toFixed(3)+"K"}
-	else if(_n>1e1){n_=(_n/1e1).toFixed(3)+""}
+	else if(_n>1e1){n_=(_n/1e0).toFixed(3)+""}
 	else if(_n>1e0){n_=(_n/1e0).toFixed(5)+""}
 	else if(_n>0.0){n_=(_n/1e0).toFixed(8)+""}
 	return(n_);
