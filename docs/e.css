@@ -108,9 +108,17 @@ button,select {
 }
 
 button.submit {
+
+		width: 60%;
 	margin-top: 50px;
-	padding: 10px;
-	font-size: 0.8em;
+	padding: 6px;
+	font-size: 0.75em;
+}
+
+button.btn-max {
+	background: #001337;
+    width: 35% !important;
+    margin-left: 2%;
 }
 
 .mechanism .input-amount input, .nft-amtl {
@@ -180,6 +188,7 @@ button.submit {
 	display: grid;
 	grid-template-columns: auto;
 	text-align: center;
+	font-size: 1.5em;
 }
 
  #bal_tvl, #bal_apr{
@@ -432,8 +441,8 @@ textarea:focus, input:focus {
 		font-size: 1.5em;
 		color: white;
 	}
+
 	button.submit {
-		width: 80%;
 		margin-top: 50px;
 		padding: 10px;
 		font-size: 1em;

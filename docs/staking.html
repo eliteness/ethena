@@ -34,17 +34,18 @@
 						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_d">
-						<br>
 						<div class="nft-amtl-desc">
 							Stake <b>eTHENA</b>
 						</div>
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_d">
+						<!--<button class="btn-max" onclick='$("in_d").value=$("bal_lp").textContent'>Max</button>-->
 						<span style="font-family: light_italic;">Available: </span>
-						<span style="font-family: " id="bal_lp">??????</span>
+						<span style="font-family:" id="bal_lp">??????</span>
 					</div>
 				</div>
 				<div style="margin-top: -25px;" align="center">
-					<button class="submit equal-gradient" onclick="deposit()"><span id="claim-offer">Deposit eTHENA</span></button>
+					<button class="submit equal-gradient" onclick="deposit(false)"><span id="claim-offer">Stake eTHENA</span></button>
+					<button class="submit equal-gradient btn-max" onclick="deposit(true)"><span id="claim-offer">Deposit All</span></button>
 				</div>
 				<span class="nft-amtl" id="nft-tl"></span>
 				<br>
@@ -55,17 +56,17 @@
 						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_w">
-						<br>
 						<div class="nft-amtl-desc">
 							Withdraw <b>eTHENA</b>
 						</div>
-						<span style="font-family: light_italic;">Available: </span>
+						<input class="light-in" placeholder="Enter Amount" style="margin: 0;" id="in_w">
+						<span style="font-family: light_italic;">Staked: </span>
 						<span style="font-family: " id="bal_fa">??????</span>
 					</div>
 				</div>
 				<div style="margin-top: -25px;" align="center">
-					<button class="submit equal-gradient" onclick="withdraw()"><span id="claim-offer">Withdraw eTHENA</span></button>
+					<button class="submit equal-gradient" onclick="withdraw(false)"><span id="claim-offer">Withdraw eTHENA</span></button>
+					<button class="submit equal-gradient btn-max" onclick="withdraw(true)"><span id="claim-offer">Unstake All</span></button>
 				</div>
 				<br>
 				<span class="nft-amtl" id="nft-tl"></span>
@@ -100,7 +101,7 @@
 					</div>
 				</div>
 				<div style="margin-top: -25px;" align="center">
-					<button class="submit equal-gradient" onclick="claim()"><span id="claim-offer">Claim Rewards</span></button>
+					<button class="submit equal-gradient" onclick="claim()"><span id="claim-offer">Claim All Rewards</span></button>
 				</div>
 				<br><br>
 			</div>
