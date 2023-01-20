@@ -272,7 +272,7 @@ async function withdraw(ismax) {
 		fa.balanceOf(window.ethereum.selectedAddress)
 	]);
 	let amt = 0;
-	am = $("in_d").value;
+	am = $("in_w").value;
 	if(ismax) {amt = al[0]; }
 	else {
 		if(!isFinite(am) || am<1/1e18) {notice(`<h2>Please decrease amount!</h2>You have entered an invalid or exaggerated amount.<br><br>Your input: ${am}`);return}
