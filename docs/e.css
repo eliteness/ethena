@@ -186,7 +186,7 @@ button.btn-max {
 
 .earn-stats {
 	display: grid;
-	grid-template-columns: auto;
+	grid-template-columns: auto auto;
 	text-align: center;
 	font-size: 1.5em;
 }
