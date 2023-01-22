@@ -1,6 +1,6 @@
 function $(_) {return document.getElementById(_);}
-let provider= {};
-let signer= {};
+let provider = {};
+let signer = {};
 window.addEventListener('load',async function()
 {
 	console.log("waitin for 3 secs..");
@@ -99,7 +99,7 @@ async function cw2()
 {
 	if(!(window.ethereum)){$("cw_m").innerHTML="Metamask not detected! Trying a refresh";console.log("Metamask not found!");window.location.reload();return(0)}
 	if(!(Number(window.ethereum.chainId)==CHAINID)){$("cw_m").innerHTML="Wrong network detected! Please switch to chain ID", CHAINID, "and refresh this page.";return(0)}
-	if(typeof provider == "undefined"){$("cw_m").innerHTML="Provider not detected! Trying a refresh";console.log("Provider not found!");window.location.reload();return(0)}
+	//if(typeof provider == "undefined"){$("cw_m").innerHTML="Provider not detected! Trying a refresh";console.log("Provider not found!");window.location.reload();return(0)}
 	/*
 	if(!
 		(isFinite(Number(accounts[0])))
@@ -108,9 +108,13 @@ async function cw2()
 	*/
 
 	//007
-	const provider = new ethers.providers.Web3Provider(window.ethereum);
+	provider = new ethers.providers.Web3Provider(window.ethereum);
 	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
+	signer = provider.getSigner();
+
+	//008
+	window.ethereum.enable().then(provider = new ethers.providers.Web3Provider(window.ethereum));
+	signer = provider.getSigner();
 
 	//004
 	window.ethereum
