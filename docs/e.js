@@ -40,13 +40,13 @@ async function basetrip()
     		params: [{
         		chainId: "0x"+(CHAINID).toString(16),
         		rpcUrls: [RPC_URL],
-        		chainName: RPC_URL.split(".")[1],
+        		chainName: CHAIN_NAME,
         		nativeCurrency: {
-            		name: RPC_URL.split(".")[1],
-            		symbol: (RPC_URL.split(".")[1]).toUpperCase(),
+            		name: CHAIN_GAS,
+            		symbol: CHAIN_GAS,
             		decimals: 18
         		},
-        		blockExplorerUrls: [EXPLORE.split("/address")[0]]
+        		blockExplorerUrls: [EXPLORE]
     		}]
 		});
 		window.location.reload
