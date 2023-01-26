@@ -373,6 +373,11 @@ textarea:focus, input:focus {
 	font-size: 0.5em !important;
 }
 
+.in-box {
+	background: rgba(0,0,0,0.5) !important;;
+	border-radius: 8px;
+	padding: 8px;
+}
 
 @media(min-width:641px) {
 
