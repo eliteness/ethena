@@ -191,8 +191,9 @@ button.btn-max {
 	font-size: 1.5em;
 }
 
- #bal_tvl, #bal_apr{
+#bal_tvl, #bal_apr{
 	text-decoration: 2px dotted underline aqua;
+	font-size:0.9em;
 }
 
 textarea:focus, input:focus {
@@ -465,6 +466,10 @@ textarea:focus, input:focus {
 	.prefill-num {
 		opacity: 0.5;
 		font-size: 0.5em !important;
+	}
+
+	#bal_tvl, #bal_apr{
+		font-size:revert;
 	}
 
 

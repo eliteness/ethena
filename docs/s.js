@@ -13,6 +13,9 @@ window.addEventListener('load',async function() {
 
 async function basetrip()
 {
+	//PRE
+	pre_stats();
+	//MAIN
 	if(!(window.ethereum)){$("cw_m").innerHTML = "Wallet wasn't detected!";console.log("Wallet wasn't detected!");notice("<h3>Wallet wasn't detected!</h3>Please make sure that your device and browser have an active Web3 wallet like MetaMask installed and running.<br><br>Visit <a href='https://metamask.io' target='_blank'>metamask.io</a> to install MetaMask wallet.");provider = new ethers.providers.JsonRpcProvider(RPC_URL); await dexstats();return}
 	else if(!Number(window.ethereum.chainId)==CHAINID){$("cw_m").innerHTML = "Wrong network! Please Switch to "+CHAINID;provider = new ethers.providers.JsonRpcProvider(RPC_URL);await dexstats();notice("<h3>Wrong network!</h3>Please Switch to Chain #"+CHAINID+"<btr"+ CHAIN_NAME+ "</u> Blockchain.");}
 	else if(//typeOf window.ethereum == Object &&Number(window.ethereum.chainId)
@@ -204,6 +207,18 @@ async function gubs() {
 	$("bal_apr").innerHTML = fornum(bal[5][0],18);
 }
 
+async function pre_stats() {
+	prepro = new ethers.providers.JsonRpcProvider(RPC_URL)
+	lp = new ethers.Contract(WRAP, LPABI, prepro);
+	fa = new ethers.Contract(FARM, FARABI, prepro);
+	bal = await Promise.all([
+		fa.tvl(),
+		fa.aprs()
+	]);
+	$("bal_tvl").innerHTML = fornum(bal[0],18);
+	$("bal_apr").innerHTML = fornum(bal[1][0],18);
+}
+
 async function deposit(ismax) {
 	lp = new ethers.Contract(WRAP, LPABI, signer);
 	fa = new ethers.Contract(FARM, FARABI, signer);
@@ -289,7 +304,7 @@ async function withdraw(ismax) {
 	console.log(_tr);
 	notice(`
 		<h3>Unstaking ${WRAPNAME}!</h3>
-		We hope you're enjoying your BNB rewards!<br>
+		We hope you are enjoying your BNB rewards!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
@@ -316,7 +331,7 @@ async function claim() {
 		<h3>Rewards are on their way!</h3>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
 		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
-		We hope your enjoy staking with us!<br>
+		We hope you enjoy staking with us!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
