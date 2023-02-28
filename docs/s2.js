@@ -191,13 +191,15 @@ function arf(){
 async function gubs() {
 	lp = new ethers.Contract(WRAP, LPABI, signer);
 	fa = new ethers.Contract(FARM, FARABI, signer);
+	fa_o = new ethers.Contract(FARMOLD, FARABI, signer);
 	bal = await Promise.all([
 		lp.balanceOf(window.ethereum.selectedAddress),
 		fa.balanceOf(window.ethereum.selectedAddress),
 		fa.earned(window.ethereum.selectedAddress,TEARNED[0]),
 		fa.earnings(window.ethereum.selectedAddress,TEARNED[0]),
 		fa.tvl(),
-		fa.aprs()
+		fa.aprs(),
+		fa_o.balanceOf(window.ethereum.selectedAddress)
 	]);
 	$("bal_lp").innerHTML = (bal[0]/1e18).toFixed(8);
 	$("bal_fa").innerHTML = (bal[1]/1e18).toFixed(8);
@@ -206,7 +208,7 @@ async function gubs() {
 	$("bal_tvl").innerHTML = fornum(bal[4],18);
 	$("bal_apr").innerHTML = fornum(bal[5][0],18);
 
-	if(Number(bal[1]) > 0) { promptRedeposit(); }
+	if(Number(bal[6]) > 0) { promptRedeposit(); }
 }
 
 async function pre_stats() {
@@ -320,17 +322,23 @@ async function withdraw(ismax) {
 	`);
 }
 
+prompted=false;
+
 async function promptRedeposit() {
-	notice(`We have found an issue with claiming BNB rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
+	if (prompted == false) {
+		notice(`We have found an issue with claiming BNB rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
+	}
 }
 
 async function withdrawOld() {
 	fa_o = new ethers.Contract(FARMOLD, FARABI, signer);
+	prompted = true;
 	notice(`
 		<h3>Withdrawing Old ${WRAPNAME} Deposit</h3>
 		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> eTHENA will be sent back to your wallet..
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
+
 	let _tr = await fa_o.withdrawAll();
 	console.log(_tr);
 	notice(`
