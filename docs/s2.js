@@ -321,7 +321,7 @@ async function withdraw(ismax) {
 }
 
 async function promptRedeposit() {
-	notice(`We have found an issue with claiming BNB rewards.<br><br><button onclick='withdraw(true)'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
+	notice(`We have found an issue with claiming BNB rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
 }
 
 async function withdrawOld() {
