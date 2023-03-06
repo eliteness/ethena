@@ -472,5 +472,61 @@ textarea:focus, input:focus {
 		font-size:revert;
 	}
 
+}
 
+
+
+
+
+#scroll-container {
+  background: black;
+  overflow: hidden;
+	padding: 5px;
+}
+
+#scroll-text {
+  text-align: right;
+	font-family: light;
+	width: max-content;
+
+  /* animation properties */
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+
+  -moz-animation: scroll-animation 30s linear infinite;
+  -webkit-animation: scroll-animation 30s linear infinite;
+  animation: scroll-animation 30s linear infinite;
+}
+
+#scroll-text span {
+  margin:10px;
+}
+/* for Firefox */
+@-moz-keyframes scroll-animation {
+  from { -moz-transform: translateX(-100%); }
+  to { -moz-transform: translateX(100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes scroll-animation {
+  from { -webkit-transform: translateX(-100%); }
+  to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes scroll-animation {
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+#scroll-text:hover{
+	animation: none;
+	transform: revert;
 }
