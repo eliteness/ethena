@@ -30,7 +30,7 @@
 				<br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png"/>
+						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png" style="border-radius:25%"/>
 						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
@@ -71,39 +71,52 @@
 				<br>
 				<span class="nft-amtl" id="nft-tl"></span>
 				<br><br>
-				<div class="hr-nft"></div>
-				<br><br><br>
-				<div class="earn-stats">
-					<div class="nft-amtl-desc">
-						$<span style="font-family: light_italic;" id="bal_tvl">???.???</span>
-						<br><b>T.V.L.</b>
-					</div>
-					<div class="nft-amtl-desc">
-						<span style="font-family: light_italic;" id="bal_apr">???.???</span>%
-						<br><b>A.P.R.</b>
-					</div>
-				</div>
-				<br><br><br>
 				<div class="input-amount-els">
 					<div>
 						<img class="bigthumb" src="https://ftm.guru/icons/bnb.svg"/>
 						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="light-in" style="margin: 0;">Total Earnings</span>
+						<span class="light-in" style="margin: 0;">Claimable Earnings:</span>
 						<br>
 						<div class="nft-amtl-desc">
-							<span style="font-family: light_italic;" id="bal_tr0">???.???</span>
+							<span style="font-family: light_italic;" id="bal_r0">???.???</span>
 							<b>BNB</b>
 						</div>
-						<span style="font-family: light_italic;">Unclaimed: </span>
-						<span style="font-family: " id="bal_r0">??????</span>
+						<span style="font-family: light_italic;">Total Earnings:</span>
+						<span style="font-family: " id="bal_tr0">??????</span> BNB
+						<button class="submit equal-gradient" onclick="claim()" style="margin-top: 10px;min-width:100%">
+							<span id="claim-offer">Claim All Rewards</span>
+						</button>
 					</div>
 				</div>
-				<div style="margin-top: -25px;" align="center">
-					<button class="submit equal-gradient" onclick="claim()"><span id="claim-offer">Claim All Rewards</span></button>
-				</div>
+
 				<br><br>
+
+
+				<div class="hr-nft"></div>
+				<br><br>
+				<div class="earn-stats" style="font-size:1.25em">
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">eTHENA Staking T.V.L.</span></div>
+					<div class="nft-amtl-desc earn-stats-val">$<b id="bal_tvl">?</b><br><br></div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Claimable BNB Rewards A.P.R.</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_apr">?</b>%</div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Autocompounding Rebase A.P.R.</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_reb_apr">?</b>%</div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Total El Ramses Staking Yield</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_tot_apr">?</b>%<br><br></div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Splitting Potential per 1 eTHENA</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="mintrate">?</b> veTHE</div>
+
+				</div>
+
+				<br><br>
+
 			</div>
 			<!--
 			<div style="margin-top: -25px;" align="center">
@@ -202,6 +215,7 @@
 				VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
 				VENAME = "veTHE";
 				VENAMM = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
+				REBASE_1 = 1673481600000;
 				POOLID = "v0.1.3";
 				BASENAME = "THE";
 				BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
