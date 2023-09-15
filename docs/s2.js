@@ -289,7 +289,7 @@ async function deposit(ismax) {
 	console.log(_tr);
 	notice(`
 		<h3>Depositing ${WRAPNAME}!</h3>
-		Get ready to start enjoying ${TEARNED.join(" + ")} rewards!<br>
+		Get ready to start enjoying ${TEARNSYM.join(" + ")} rewards!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
@@ -327,7 +327,7 @@ async function withdraw(ismax) {
 	console.log(_tr);
 	notice(`
 		<h3>Unstaking ${WRAPNAME}!</h3>
-		We hope you are enjoying your ${TEARNED.join(" + ")} rewards!<br>
+		We hope you are enjoying your ${TEARNSYM.join(" + ")} rewards!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
@@ -345,7 +345,7 @@ prompted=false;
 
 async function promptRedeposit() {
 	if (prompted == false) {
-		notice(`We have found an issue with claiming ${TEARNED.join(" + ")} rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
+		notice(`We have found an issue with claiming ${TEARNSYM.join(" + ")} rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
 	}
 }
 
