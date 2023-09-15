@@ -1,70 +1,136 @@
 <!doctype html>
 <html>
-<meta charset="UTF-8">
-<head>
-<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
-<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
-<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/icons/ethena.png"/>
-<link rel="stylesheet" href="e.css"/>
+	<meta charset="UTF-8">
+	<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
+	<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
+	<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://ftm.guru/icons/ethena.png"/>
+	<link rel="stylesheet" href="e.css"/>
 	<body>
 		<div class="partnership">
-			<h1><span>Mint_ eTHENA </span></h1>
-			<h2>Convert Your Locked veTHE NFT into Liquid eTHENA Tokens</h2>
+			<h1><span>L2_ Farm</span></h1>
+			<h2>Stake Your eTHENA/BNB LP tokens to start Earning THE Rewards!</h2>
 		</div>
 		<div class="mechanism">
 			<div class="amount">
 				<br>
 				<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
-				<div align="center">
-					<select class="equal-gradient" id="nft-sel" onchange="quote()">
-						<option value="" selected>Choose a NFT</option>
-					</select>
-				</div>
-				<p><span id="nft-bal">Balance: Loading..</span></p>
+				<!--
+				<p style="">
+					<br>
+					<span id="nft-bal" class="equal-gradient" style="border-radius: 100px;padding: 5px;margin: 5px;position: relative;bottom: 5px;">78,123,456 eTHENA</span>
+					<br>
+					<span style="font-family: light;">Available Balance</span>
+				</p>
+				-->
 			</div>
 			<div class="input-amount">
 				<br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/the.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg"/>
+						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png" style="border-radius:25%;clip-path: inset(0px 0px 36px 0px);">
+						<img style="position: relative;margin-left: -83px;clip-path: inset(42px 0px 0px 0px);background: black;border-radius: 40px;margin-right: 36px;" class="bigthumb" src="https://ftm.guru/icons/bnb.svg">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-amt"><span class="prefill-num">Convert veNFTs of</span></span>
 						<div class="nft-amtl-desc">
-							Locked <b>veTHE</b>
+							Stake <b>LP</b>
 						</div>
+						<input class="light-in in-box" placeholder="Enter Amount" style="margin: 0;" id="in_d">
+						<!--<button class="btn-max" onclick='$("in_d").value=$("bal_lp").textContent'>Max</button>-->
+						<span style="font-family: light_italic;">Available: </span>
+						<span style="font-family:" id="bal_lp">??????</span>
 					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="deposit(false)"><span id="claim-offer">Stake LP</span></button>
+					<button class="submit equal-gradient btn-max" onclick="deposit(true)"><span id="claim-offer">Deposit Max</span></button>
+				</div>
+				<span class="nft-amtl" id="nft-tl"></span>
+				<br>
+				<br>
+				<div class="input-amount-els">
+					<div>
+						<img class="bigthumb" src="img/bank.svg"/>
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
+					</div>
+					<div class="nft-amt-nums">
+						<div class="nft-amtl-desc">
+							Withdraw <b>LP</b>
+						</div>
+						<input class="light-in in-box" placeholder="Enter Amount" style="margin: 0;" id="in_w">
+						<span style="font-family: light_italic;">Staked: </span>
+						<span style="font-family: " id="bal_fa">??????</span>
+					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="withdraw(false)"><span id="claim-offer">Withdraw LP</span></button>
+					<button class="submit equal-gradient btn-max" onclick="withdraw(true)"><span id="claim-offer">Unstake Max</span></button>
 				</div>
 				<br>
 				<span class="nft-amtl" id="nft-tl"></span>
 				<br><br>
-				<div class="hr-nft"></div>
-				<br><br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
+						<img class="bigthumb" src="https://ftm.guru/icons/the.png"/>
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-offer"><span class="prefill-num">Earn BNB by staking</span></span>
+						<span class="light-in" style="margin: 0;">Claimable Earnings:</span>
+						<br>
 						<div class="nft-amtl-desc">
-							Liquid <b>eTHENA</b>
+							<span style="font-family: light_italic;" id="bal_r0">???.???</span>
+							<b>THE</b>
 						</div>
+						<span style="font-family: light_italic;">Total Earnings:</span>
+						<span style="font-family: " id="bal_tr0">??????</span> BNB
+						<button class="submit equal-gradient" onclick="claim()" style="margin-top: 10px;min-width:100%">
+							<span id="claim-offer">Claim All Rewards</span>
+						</button>
 					</div>
 				</div>
+
+				<br><br>
+
+
+				<div class="hr-nft"></div>
+				<br><br>
+				<div class="earn-stats" style="font-size:1.25em">
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">T.V.L. of eTHENA/BNB LP</span></div>
+					<div class="nft-amtl-desc earn-stats-val">$<b id="bal_tvl">?</b><br><br></div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Claimable THE Rewards A.P.R.</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_apr">?</b>%</div>
+
+					<!--
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Autocompounding Rebase A.P.R.</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_reb_apr">?</b>%</div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Total eTHENA Staking Yield</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="bal_tot_apr">?</b>%<br><br></div>
+
+					<div class="nft-amtl-desc earn-stats-key"><span style="font-family: light_italic;">Splitting Potential per eTHENA</span></div>
+					<div class="nft-amtl-desc earn-stats-val"><b id="mintrate">?</b> veTHE</div>
+
+					-->
+
+				</div>
+
+				<br><br>
+
 			</div>
+			<!--
 			<div style="margin-top: -25px;" align="center">
 				<button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Select your veNFT</span></button>
 				<br><br>
-			</div>
+			</div>-->
 		</div>
 		<div class="analytics">
-			<a class="equal-gradient-white">Mint</a>
-			<a href="staking">Stake</a>
-			<a href="./farm">L2 Farm</a>
+			<a href="./">Mint</a>
+			<a href="./staking">Stake</a>
+			<a class="equal-gradient-white">L2 Farm</a>
 			<a href="https://thena.fi/liquidity/manage/0x9798a3835c8c87bd92803c3a248ae0042fbe4c6c" target="_blank">THE Gauge</a>
 			<br><br>
 			<a href="https://thena.fi/swap" target="_blank">Trade</a>
@@ -81,6 +147,7 @@
 			</div>
 		</div>
 	</div>
+
 
 
 	<div class="extra">
@@ -117,7 +184,6 @@
 
 
 
-
 <!-- IGNORE BELOW BLOCK : DEV LOGS -->
 		<div style="display:none">
 		<span id="cw_m"></span>
@@ -145,28 +211,24 @@
 			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
-			<script src="e.js"></script>
+			<script src="f.js"></script>
 			<script>
 				CHAINID = 56;
 				RPC_URL = "https://rpc.ankr.com/bsc";
 				EXPLORE = "https://bscscan.com";
 				CHAIN_NAME = "Binance Smart Chain Mainnet";
 				CHAIN_GAS = "BNB";
-				VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
-				VENAME = "veTHE";
-				VENAMM = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
-				POOLID = "v0.1.3";
-				BASENAME = "THE";
-				BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
-				WRAP = "0xafbe3b8b0939a5538DE32f7752A78e08C8492295";
-				WRAPNAME = "eTHENA";
+				WRAP = "0x9798a3835c8C87bD92803C3A248aE0042FBE4c6c";
+				WRAPNAME = "LP-eTHENA/WNB";
 				BASELOGO = "https://ftm.guru/icons/the.png";
 				TOKENNAME = "THE";
 				TOKEN = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
 				TOKENLOGO = "https://ftm.guru/icons/ethena.png";
 				WRAPLOGO = "https://ftm.guru/icons/ethena.png";
-				ID = 2714;
-				VOTER = "0x62Ee96e6365ab515Ec647C065c2707d1122d7b26"
+				FARM = "0x497777d3c093992ab5f444e3d1e3470fe1106ec5";
+				TEARNED = ["0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11"];
+				TEARNSYM = ["THE"];
+				TEARNIMG = ["https://ftm.guru/icons/the.png"]
 			</script>
 	</body>
 </html>
