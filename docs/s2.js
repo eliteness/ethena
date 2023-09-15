@@ -220,7 +220,7 @@ async function pre_stats() {
 	lp = new ethers.Contract(WRAP, LPABI, prepro);
 	fa = new ethers.Contract(FARM, FARABI, prepro);
 	vm = new ethers.Contract(VENAMM,VMABI, prepro);
-	$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(4);
+	//$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(4);
 	bal = await Promise.all([
 		fa.tvl(),
 		fa.aprs(),
@@ -229,14 +229,14 @@ async function pre_stats() {
 	bal[2]*=1e4;
 	$("bal_tvl").innerHTML = fornum5(bal[0],18,2);
 	$("bal_apr").innerHTML = fornum5(bal[1][0],18,2);
-	$("mintrate").innerHTML = fornum5(bal[2],18,2);
+	//$("mintrate").innerHTML = fornum5(bal[2],18,2);
 	//rebase apr
 	wks = Math.floor(( Date.now() - REBASE_1) / (86400e3 * 7)) ;
 	//rwr = (bal[2]/1e18 - 1) / wks;
 	//rbapr = (1+rwr)**52 * 100;
 	rwr = (bal[2]/1e18)**(1/wks);
 	rbapr = (rwr**52-1) * 100;
-	$("mintrate").innerHTML = fornum(bal[2],18);
+	$("mintrate").innerHTML = fornum5(bal[2],18,2);
 	$("bal_reb_apr").innerHTML = fornum5(rbapr, 0, 2);
 	$("bal_tot_apr").innerHTML = fornum5(rbapr + bal[1][0]/1e18, 0, 2);
 	//console.log("bal t/a: ", fornum(bal[0],18), fornum(bal[1][0],18) )
@@ -289,7 +289,7 @@ async function deposit(ismax) {
 	console.log(_tr);
 	notice(`
 		<h3>Depositing ${WRAPNAME}!</h3>
-		Get ready to start enjoying BNB rewards!<br>
+		Get ready to start enjoying ${TEARNED.join(" + ")} rewards!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
@@ -327,7 +327,7 @@ async function withdraw(ismax) {
 	console.log(_tr);
 	notice(`
 		<h3>Unstaking ${WRAPNAME}!</h3>
-		We hope you are enjoying your BNB rewards!<br>
+		We hope you are enjoying your ${TEARNED.join(" + ")} rewards!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 	_tw = await _tr.wait()
@@ -345,7 +345,7 @@ prompted=false;
 
 async function promptRedeposit() {
 	if (prompted == false) {
-		notice(`We have found an issue with claiming BNB rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
+		notice(`We have found an issue with claiming ${TEARNED.join(" + ")} rewards.<br><br><button onclick='withdrawOld()'>Withdraw All</button><br><br>We request you to withdraw once & redeposit again. Inconvenience is deeply regretted 🙏. <br><br>`);
 	}
 }
 
