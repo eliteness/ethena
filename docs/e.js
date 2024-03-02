@@ -329,6 +329,8 @@ function notice(c) {
 }
 
 async function dexstats() {
+	vm = new ethers.Contract(VENAMM,["function price() public view returns(uint)"],provider);
+	$("mintrate").innerHTML = ((await vm.price() )/1e14).toFixed(4);
 	return;
 	vm = new ethers.Contract(VENAMM,VMABI,provider);
 	_b = (new ethers.Contract(TOKEN, VEABI, provider)).balanceOf(VENAMM);
