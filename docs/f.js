@@ -196,6 +196,10 @@ async function gubs() {
 	lp = new ethers.Contract(WRAP, LPABI, signer);
 	fa = new ethers.Contract(FARM, FARABI, signer);
 	//fa_o = new ethers.Contract(FARMOLD, FARABI, signer);
+	if(window.ethereum.selectedAddress==null || window.ethereum.selectedAddress==undefined) {
+		console.log("selectedAddress not found!",window.ethereum.selectedAddress);
+		return;
+	}
 	bal = await Promise.all([
 		lp.balanceOf(window.ethereum.selectedAddress),
 		fa.balanceOf(window.ethereum.selectedAddress),
@@ -212,7 +216,7 @@ async function gubs() {
 	$("bal_tr0").innerHTML = (bal[3]/1e18).toLocaleString();
 	$("bal_tr1").innerHTML = (bal[6]/1e18).toLocaleString();
 	$("bal_tvl").innerHTML = fornum5(bal[4],18,2);
-	$("bal_apr").innerHTML = fornum5(bal[5][0],18,2);
+	$("bal_apr").innerHTML = fornum5(bal[5],18,2);
 
 	//if(Number(bal[6]) > 0) { promptRedeposit(); }
 }
