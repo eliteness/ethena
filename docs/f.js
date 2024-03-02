@@ -204,17 +204,16 @@ async function gubs() {
 		lp.balanceOf(window.ethereum.selectedAddress),
 		fa.balanceOf(window.ethereum.selectedAddress),
 		fa.earned(window.ethereum.selectedAddress,TEARNED[0]),
-		fa.earnings(window.ethereum.selectedAddress,TEARNED[0]),
+		fa.earningsList(window.ethereum.selectedAddress,TEARNED),
 		fa.tvl(),
 		fa.apr(),
-		fa.earnings(window.ethereum.selectedAddress,TEARNED[1]),
 		//fa_o.balanceOf(window.ethereum.selectedAddress)
 	]);
 	$("bal_lp").innerHTML = (bal[0]/1e18).toFixed(8);
 	$("bal_fa").innerHTML = (bal[1]/1e18).toFixed(8);
 	$("bal_r0").innerHTML = (bal[2]/1e18).toFixed(8);
-	$("bal_tr0").innerHTML = (bal[3]/1e18).toLocaleString();
-	$("bal_tr1").innerHTML = (bal[6]/1e18).toLocaleString();
+	$("bal_tr0").innerHTML = (bal[3][0]/1e18).toLocaleString();
+	$("bal_tr1").innerHTML = (bal[3][1]/1e18).toLocaleString();
 	$("bal_tvl").innerHTML = fornum5(bal[4],18,2);
 	$("bal_apr").innerHTML = fornum5(bal[5],18,2);
 
