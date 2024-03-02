@@ -207,7 +207,7 @@ async function gubs() {
 		fa.earningsList(window.ethereum.selectedAddress,TEARNED),
 		fa.tvl(),
 		fa.apr(),
-		fa.earningsListUSD(window.ethereum.selectedAddress,TEARNED),
+		fa.earningsUSDList(window.ethereum.selectedAddress,TEARNED),
 		//fa_o.balanceOf(window.ethereum.selectedAddress)
 	]);
 	$("bal_lp").innerHTML = (bal[0]/1e18).toFixed(8);
