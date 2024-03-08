@@ -258,7 +258,7 @@ async function pre_stats() {
 	relativePrice = bal[3] / 100e18;
 	relp_rate = (relativePrice)**(1/wks);
 	relp_apy = (relp_rate**52-1) * 100;
-	$("bal_relp_apy").innerHTML = relp_apy>0?"+":"" + fornum5(relp_apy, 0, 2);
+	$("bal_relp_apy").innerHTML = `${relp_apy>0?"+":""}${fornum5(relp_apy, 0, 2)}`;
 
 	$("bal_tot_apr").innerHTML = fornum5(relp_apy + bal[1][0]/1e18, 0, 2);
 	//console.log("bal t/a: ", fornum(bal[0],18), fornum(bal[1][0],18) )
