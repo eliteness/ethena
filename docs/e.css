@@ -191,10 +191,12 @@ button.btn-max {
 	font-size: 1.5em;
 }
 
+/*
 #bal_tvl, #bal_apr{
 	text-decoration: 2px dotted underline aqua;
 	font-size:0.9em;
 }
+*/
 
 textarea:focus, input:focus {
 	outline: none;
@@ -534,7 +536,7 @@ textarea:focus, input:focus {
 
 .earn-stats-key {
     text-align:left;
-    font-size:1.25em;
+    font-size:1em;
 }
 .earn-stats-val {
     text-align:right;

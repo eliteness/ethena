@@ -221,24 +221,44 @@ async function pre_stats() {
 	fa = new ethers.Contract(FARM, FARABI, prepro);
 	vm = new ethers.Contract(VENAMM,VMABI, prepro);
 	//$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(4);
+	_p100 = fetch("https://api.odos.xyz/sor/quote/v2", {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 56,
+				inputTokens: [ { tokenAddress: WRAP, amount: BigInt(100e18).toString() } ],
+				outputTokens: [ { tokenAddress: TOKEN, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		})
 	bal = await Promise.all([
 		fa.tvl(),
 		fa.aprs(),
-		vm.price()
+		vm.price(),
+		_p100
 	]);
 	bal[2]*=1e4;
 	$("bal_tvl").innerHTML = fornum5(bal[0],18,2);
 	$("bal_apr").innerHTML = fornum5(bal[1][0],18,2);
 	//$("mintrate").innerHTML = fornum5(bal[2],18,2);
+	$("mintrate").innerHTML = fornum5(bal[2],18,4);
 	//rebase apr
 	wks = Math.floor(( Date.now() - REBASE_1) / (86400e3 * 7)) ;
 	//rwr = (bal[2]/1e18 - 1) / wks;
 	//rbapr = (1+rwr)**52 * 100;
 	rwr = (bal[2]/1e18)**(1/wks);
-	rbapr = (rwr**52-1) * 100;
-	$("mintrate").innerHTML = fornum5(bal[2],18,2);
-	$("bal_reb_apr").innerHTML = fornum5(rbapr, 0, 2);
-	$("bal_tot_apr").innerHTML = fornum5(rbapr + bal[1][0]/1e18, 0, 2);
+	rb_apy = (rwr**52-1) * 100;
+	$("bal_reb_apy").innerHTML = fornum5(rb_apy, 0, 2);
+
+	relativePrice = Number(bal[3].outAmounts[0]) / 100e18;
+	relp_rate = (relativePrice)**(1/wks);
+	relp_apy = (repl_rate**52-1) * 100;
+	$("bal_relp_apy").innerHTML = fornum5(relp_apy, 0, 2);
+
+	$("bal_tot_apr").innerHTML = fornum5(relp_apy + bal[1][0]/1e18, 0, 2);
 	//console.log("bal t/a: ", fornum(bal[0],18), fornum(bal[1][0],18) )
 }
 
@@ -380,7 +400,7 @@ async function claim() {
 	notice(`
 		<h3>Claiming Rewards!</h3>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM.join(" + ")}</u><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
 	let _tr = await fa.getReward(TEARNED[0]);
@@ -388,7 +408,7 @@ async function claim() {
 	notice(`
 		<h3>Rewards are on their way!</h3>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM.join(" + ")}</u><br><br>
 		We hope you enjoy staking with us!<br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
@@ -398,7 +418,7 @@ async function claim() {
 		<h3>Rewards Credited!</h3>
 		<br><br>
 		<img style='height:20px;position:relative;top:4px' src="${TEARNIMG[0]}">
-		<u>${ $("bal_r0").innerHTML } ${TEARNSYM[0]}</u><br><br>
+		<u>${ $("bal_r0").innerHTML } ${TEARNSYM.join(" + ")}</u><br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
 }
