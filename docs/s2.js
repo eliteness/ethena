@@ -253,7 +253,9 @@ async function pre_stats() {
 	rb_apy = (rwr**52-1) * 100;
 	$("bal_reb_apy").innerHTML = fornum5(rb_apy, 0, 2);
 
-	relativePrice = Number(bal[3].outAmounts[0]) / 100e18;
+	bal[3] = await bal[3].json();
+	bal[3] = Number(bal[3].outAmounts[0])
+	relativePrice = bal[3] / 100e18;
 	relp_rate = (relativePrice)**(1/wks);
 	relp_apy = (repl_rate**52-1) * 100;
 	$("bal_relp_apy").innerHTML = fornum5(relp_apy, 0, 2);
