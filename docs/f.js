@@ -203,7 +203,7 @@ async function gubs() {
 	bal = await Promise.all([
 		lp.balanceOf(window.ethereum.selectedAddress),
 		fa.balanceOf(window.ethereum.selectedAddress),
-		fa.earned(window.ethereum.selectedAddress,TEARNED[0]),
+		fa.earned(window.ethereum.selectedAddress,TEARNED[1]),
 		fa.earningsList(window.ethereum.selectedAddress,TEARNED),
 		fa.tvl(),
 		fa.apr(),
