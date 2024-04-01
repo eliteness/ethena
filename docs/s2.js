@@ -240,7 +240,6 @@ async function pre_stats() {
 		vm.price(),
 		_p100
 	]);
-	bal[2]*=1e4;
 	$("bal_tvl").innerHTML = fornum5(bal[0],18,2);
 	$("bal_apr").innerHTML = fornum5(bal[1][0],18,2);
 	//$("mintrate").innerHTML = fornum5(bal[2],18,2);
