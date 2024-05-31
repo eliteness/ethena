@@ -246,7 +246,7 @@ textarea:focus, input:focus {
 	background: -webkit-linear-gradient(left, #f0a, #90f);
 }
 
-#p_cw{font-size:1em;font-family:light}
+#p_cw{font-size:1em;font-family:light;position:relative;z-index:1;}
 
 #nft-sel {
 	font-size: 0.8em;
