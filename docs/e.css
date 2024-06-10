@@ -542,3 +542,14 @@ textarea:focus, input:focus {
     text-align:right;
     font-size:1em;
 }
+
+.dune-counters, .dune-chart {
+	text-align:center;
+}
+
+.dune-chart iframe {
+	width:80%;
+	height:60vh;
+}
+
+
