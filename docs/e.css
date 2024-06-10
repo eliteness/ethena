@@ -484,6 +484,7 @@ textarea:focus, input:focus {
   background: black;
   overflow: hidden;
 	padding: 5px;
+	display:none;
 }
 
 #scroll-text {
