@@ -368,3 +368,38 @@ function notice(c) {
 async function dexstats() {
 	return;
 }
+async function extendRewards() {
+	notice(`
+		<h2>Donate Rewards</h2>
+		Enter the amount of ${TEARNED[0]} you want to Donate as rewards to this Farmland. It will also extend the dry date by 8 days!<br><br>
+		YOU WILL LOSE YOUR TOKENS! DONT DO THIS!!
+		<input id="extendRewardsInput" placeholder="Amount">
+		<br><br><button onclick="notifyRewards()">Add</button>
+	`);
+}
+async function notifyRewards() {
+	_amt = $('extendRewardsInput').value;
+	_T = new ethers.Contract(TEARNED[0],LPAB1,signer);
+	_ab = await Promise.all([
+		_T.balanceOf(window.ethereum.selectedAddress),
+		_T.allowance(window.ethereum.selectedAddress,f_1_add)
+	]);
+
+	if(Number(_ab[0])/1e18 < _amt) { notice(`Insufficient Balance!`); return; }
+
+	if(Number(_ab[1])/1e18 < _amt) {
+		notice(`Insufficient Allowance!<br><br>Please allow the Farmland to spend ${_amt} tokens from your wallet!`);
+		txh = await _T.approve(f_1_add, BigInt(Math.floor(_amt*1e18)) );//ethers.constants.MaxUint256
+		notice(`Approving ${_amt} tokens..`);
+		await txh.wait();
+	}
+
+	_F = new ethers.Contract(f_1_add,FARMABI,signer);
+	notice(`Approve the transaction in wallet..`);
+	txh = await _F.notifyRewardAmount( BigInt(Math.floor(_amt*1e18)) );
+	notice(`Adding Rewards..`);
+	await txh.wait();
+	notice(`<h2>Rewards added!</h2>`);
+
+
+}
