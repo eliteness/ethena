@@ -396,9 +396,9 @@ async function notifyRewards() {
 		await txh.wait();
 	}
 
-	_F = new ethers.Contract(FARM,FARMABI,signer);
+	_F = new ethers.Contract(FARM,FARABI,signer);
 	notice(`Approve the transaction in wallet..`);
-	txh = await _F.notifyRewardAmount( BigInt(Math.floor(_amt*1e18)) );
+	txh = await _F.notifyRewardAmount( TEARNED[0], BigInt(Math.floor(_amt*1e18)) );
 	notice(`Adding Rewards..`);
 	await txh.wait();
 	notice(`<h2>Rewards added!</h2>`);
