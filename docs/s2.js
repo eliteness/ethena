@@ -243,7 +243,7 @@ async function pre_stats() {
 	$("bal_tvl").innerHTML = fornum5(bal[0],18,2);
 	$("bal_apr").innerHTML = fornum5(bal[1][0],18,2);
 	//$("mintrate").innerHTML = fornum5(bal[2],18,2);
-	$("mintrate").innerHTML = fornum5(bal[2],18,4);
+	$("mintrate").innerHTML = fornum5(bal[2],18,8);
 	//rebase apr
 	wks = Math.floor(( Date.now() - REBASE_1) / (86400e3 * 7)) ;
 	//rwr = (bal[2]/1e18 - 1) / wks;

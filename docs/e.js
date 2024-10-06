@@ -386,7 +386,7 @@ function notice(c) {
 
 async function dexstats() {
 	vm = new ethers.Contract(VENAMM,VMABI,provider);
-	$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(4);
+	$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(8);
 
 	return;
 	vm = new ethers.Contract(VENAMM,VMABI,provider);
