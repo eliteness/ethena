@@ -448,19 +448,19 @@ async function notifyRewards() {
 	_T = new ethers.Contract(TEARNED[0],LPABI,signer);
 	_ab = await Promise.all([
 		_T.balanceOf(window.ethereum.selectedAddress),
-		_T.allowance(window.ethereum.selectedAddress,f_1_add)
+		_T.allowance(window.ethereum.selectedAddress,FARM)
 	]);
 
 	if(Number(_ab[0])/1e18 < _amt) { notice(`Insufficient Balance!`); return; }
 
 	if(Number(_ab[1])/1e18 < _amt) {
 		notice(`Insufficient Allowance!<br><br>Please allow the Farmland to spend ${_amt} tokens from your wallet!`);
-		txh = await _T.approve(f_1_add, BigInt(Math.floor(_amt*1e18)) );//ethers.constants.MaxUint256
+		txh = await _T.approve(FARM, BigInt(Math.floor(_amt*1e18)) );//ethers.constants.MaxUint256
 		notice(`Approving ${_amt} tokens..`);
 		await txh.wait();
 	}
 
-	_F = new ethers.Contract(f_1_add,FARMABI,signer);
+	_F = new ethers.Contract(FARM,FARMABI,signer);
 	notice(`Approve the transaction in wallet..`);
 	txh = await _F.notifyRewardAmount( BigInt(Math.floor(_amt*1e18)) );
 	notice(`Adding Rewards..`);
