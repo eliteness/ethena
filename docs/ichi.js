@@ -371,15 +371,17 @@ async function dexstats() {
 async function extendRewards() {
 	notice(`
 		<h2>Donate Rewards</h2>
-		Enter the amount of ${TEARNED[0]} you want to Donate as rewards to this Farmland. It will also extend the dry date by 8 days!<br><br>
+		Enter the amount of ${TEARNSYM[0]} you want to Donate as rewards to this Farmland. It will also extend the dry date by 8 days!<br><br>
 		YOU WILL LOSE YOUR TOKENS! DONT DO THIS!!
-		<input id="extendRewardsInput" placeholder="Amount">
-		<br><br><button onclick="notifyRewards()">Add</button>
+		<br>
+		<input id="extendRewardsInput" placeholder="Amount" class="light-in in-box"/>
+		<br><br>
+		<button onclick="notifyRewards()" class="equal-gradient">Add</button>
 	`);
 }
 async function notifyRewards() {
 	_amt = $('extendRewardsInput').value;
-	_T = new ethers.Contract(TEARNED[0],LPAB1,signer);
+	_T = new ethers.Contract(TEARNED[0],LPABI,signer);
 	_ab = await Promise.all([
 		_T.balanceOf(window.ethereum.selectedAddress),
 		_T.allowance(window.ethereum.selectedAddress,f_1_add)
