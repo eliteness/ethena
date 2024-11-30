@@ -388,7 +388,47 @@ async function dexstats() {
 	vm = new ethers.Contract(VENAMM,VMABI,provider);
 	$("mintrate").innerHTML = ((await vm.price() )/1e18).toFixed(8);
 
+	MGR = new ethers.Contract(MANAGER, MGRABI, provider);
+	_mi = await MGR.info(
+		"0x0000000000000000000000000000000000001234",
+		[],//["0x90cda9b619b124d321111fe240f8191a72e93297","0x7898a099b61fdecd83a26f4006812ef04e0ceb08","0x555aa3101d034bb426cc53f5ddc992add7045bb4"],
+		["0x555aa3101d034bb426cc53f5ddc992add7045bb4",BASE, "0x555aa3101d034bb426cc53f5ddc992add7045bb4",WRAP]
+	);
+	/*
+		0	uint[10] memory,
+				0	ELTOKEN.balanceOf(_user),
+				1	ELTOKEN.totalSupply(),
+				2	price(),
+				3	floor,
+				4	feesToDao,
+				5	feesToBurn,
+				6	ID,
+				7	uint(int256(VENFT.locked(ID).amount)),
+				8	VENFT.totalSupply(),
+				9	venft.locked(ID).end
+				10	votedTime
+				11	allow(user,MGR)
+				12	venft.balanceOf(user)
+				1n	price[n]
+		1	address[] memory,
+		2	uint[] memory,
+		3	uint[] memory _farm_info,
+				5i+0	bal(u)
+				5i+1	ts
+				5i+2	tvl
+				5i+3 apr
+				5i+4 allow
+		4	uint[] memory
+	 */
+
+	//$("topstat-tvl-l2").innerHTML = 0;//(( Number(_mi[3][5*0+2]) + Number(_mi[3][5*1+2]) + Number(_mi[3][5*2+2]) ) / 1e18).toLocaleString(undefined,{maximumFractionDigits:0})
+	$("topstat-tvl").innerHTML = ( Number(_mi[0][7])/1e18 ).toLocaleString(undefined,{maximumFractionDigits:0})
+	$("topstat-dominance").innerHTML = ( Number(_mi[0][7]) / Number(_mi[0][8]) * 100 ).toFixed(4) +"%"
+
 	return;
+
+
+
 	vm = new ethers.Contract(VENAMM,VMABI,provider);
 	_b = (new ethers.Contract(BASE, VEABI, provider)).balanceOf(VENAMM);
 	/*_c = vm.tradesCounter(BASE);*/

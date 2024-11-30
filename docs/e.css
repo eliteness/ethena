@@ -291,6 +291,7 @@ textarea:focus, input:focus {
 	visibility: hidden;
 	opacity: 0;
 	overflow-y:	auto;
+	z-index: 1;
 }
 .overlay:target {
 	visibility: visible;
@@ -554,3 +555,39 @@ textarea:focus, input:focus {
 }
 
 
+
+
+.topstats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2%;
+}
+
+.topstat {
+    background: #f3f3;
+    padding: 20px;
+    border: 1px solid #f0f;
+    border-radius: 10px;
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.topstat div:first-child {
+    font-family: bold;
+    font-size: 1.5em;
+}
+
+.topstat div:last-child {
+    font-family: regular;
+    font-size: 1em;
+}
+
+
+@media (max-width: 700px) {
+    .topstats {
+        flex-direction: column;
+    }
+}
