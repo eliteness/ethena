@@ -278,6 +278,9 @@ async function reclaim() {
 }
 
 async function split(ismax) {
+	if( (Date.now() % 604800e3) > (604800e3 - 86400e3) ) {
+		notice(`Redeeming eTHENA is unavailable on Wednesdays.. pls try tomorrow!`);
+	}
 	lp = new ethers.Contract(WRAP, LPABI, signer);
 	MGR = new ethers.Contract(MANAGER, MGRABI, signer);
 	al = await Promise.all([
