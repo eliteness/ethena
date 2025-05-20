@@ -1,6 +1,7 @@
 function $(_) {return document.getElementById(_);}
 let provider= {};
 let signer= {};
+ZERO_ADDR = "0x0000000000000000000000000000000000000000";
 window.addEventListener('load',async function() {
 	console.log("waitin for 3 secs..");
 	$("cw_m").innerHTML = "Connecting.. Please wait."
