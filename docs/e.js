@@ -424,6 +424,7 @@ async function dexstats() {
 	//$("topstat-tvl-l2").innerHTML = 0;//(( Number(_mi[3][5*0+2]) + Number(_mi[3][5*1+2]) + Number(_mi[3][5*2+2]) ) / 1e18).toLocaleString(undefined,{maximumFractionDigits:0})
 	$("topstat-tvl").innerHTML = ( Number(_mi[0][7])/1e18 ).toLocaleString(undefined,{maximumFractionDigits:0})
 	$("topstat-dominance").innerHTML = ( Number(_mi[0][7]) / Number(_mi[0][8]) * 100 ).toFixed(4) +"%"
+	$("mint-fee").innerHTML = "of " + 2 * ( Number(_mi[0][7]) / Number(_mi[0][8]) * 100 ).toFixed(4) +"% "
 
 	return;
 

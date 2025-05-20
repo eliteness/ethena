@@ -238,10 +238,13 @@ async function pre_stats() {
 	MGR = new ethers.Contract(MANAGER, MGRABI, prepro);
 	_mi = await MGR.info(ZERO_ADDR,[],[]);
 
-	$("mintrate").innerHTML = fornum5(_mi[0][2],18,8);
+	//$("mintrate").innerHTML = fornum5(_mi[0][2],18,8);
+	// we need backing ratio, not mint rate
+	backing_ratio = Number(_mi[0][7]) * 1e18 / Number(_mi[0][1]);
+	$("mintrate").innerHTML = fornum5( backing_ratio , 18 , 8 );
 	$("split-fee-total").innerHTML = fornum5(Number(_mi[0][4])+Number(_mi[0][5]),18-2,2);
-	$("split-rate").innerHTML = fornum5( Number(_mi[0][2])*(1e18-(Number(_mi[0][4])+Number(_mi[0][5]))),18+18,8);
-	$("split-reserve").innerHTML = ((_mi[0][1]-_mi[0][3])*_mi[0][2]/1e36).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
+	$("split-rate").innerHTML = fornum5( backing_ratio * (1e18-(Number(_mi[0][4])+Number(_mi[0][5]))),18+18,8);
+	$("split-reserve").innerHTML = ((_mi[0][1]-_mi[0][3])*backing_ratio/1e36).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
 }
 
 async function reclaim() {
@@ -280,6 +283,7 @@ async function reclaim() {
 async function split(ismax) {
 	if( (Date.now() % 604800e3) > (604800e3 - 86400e3) ) {
 		notice(`Redeeming eTHENA is unavailable on Wednesdays.. pls try tomorrow!`);
+		return;
 	}
 	lp = new ethers.Contract(WRAP, LPABI, signer);
 	MGR = new ethers.Contract(MANAGER, MGRABI, signer);
