@@ -244,7 +244,7 @@ async function gubs() {
 	*/
 
 	$("bal_lp").innerHTML = bigIntToDecimal( VI[8] , 18);
-	$("bal_fa").innerHTML = Number(VI[7])==0 ? 0 : bigIntToDecimal( BigInt(VI[2]) * BigInt(VI[8]) / BigInt(VI[7]) , 18);
+	$("bal_fa").innerHTML = Number(VI[7])==0 ? 0 : bigIntToDecimal( BigInt(VI[2]) * BigInt(VI[10]) / BigInt(VI[7]) , 18);
 	$("istat-assets").innerHTML = fornum5(VI[2],18,2);
 	$("istat-shares").innerHTML = fornum5(VI[7],18,2);
 	$("istat-ratio").innerHTML = Number(VI[7])==0 ? 0 : fornum5( Number(VI[2]) / Number(VI[7]) , 0 , 6) +"x";
