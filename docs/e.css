@@ -30,6 +30,7 @@ body {
 	background: url('img/bgypt.png');
 	background-attachment: fixed;
 	background-position: cover;
+	background-size: 100% 100%;
 }
 
 small {
@@ -278,6 +279,9 @@ textarea:focus, input:focus {
 	-webkit-text-fill-color: transparent;
 	font-size:2.5em
 }
+.extra a {
+	text-decoration: none;
+}
 
 
 .overlay {
@@ -350,6 +354,7 @@ textarea:focus, input:focus {
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 5px;
+	display:none;
 }
 
 .analytics a {
@@ -590,4 +595,59 @@ textarea:focus, input:focus {
     .topstats {
         flex-direction: column;
     }
+}
+
+.footer {
+	backdrop-filter: blur(10px);
+	margin:0;
+	padding:0;
+	background: #0007;
+}
+.footer-nav {
+	display:grid;
+	grid-template-columns: auto;
+	padding-bottom: 20px;
+	text-align: left;
+	margin: 100px calc( max(10px , 2%)) 0px;
+}
+.footer-nav-sub{
+	margin-top: 50px;
+}
+.footer-nav-sub-head {
+	font-family:bold;
+	font-size:2em;
+	border-bottom: 1px solid #0ff7;
+	margin-bottom: 10px
+}
+.footer-nav-sub div {
+		margin: 10px auto;
+}
+.footer-nav-sub a {
+	text-decoration: none;
+	color: #fff;
+	font-family: light;
+	font-weight: 900;
+	font-size: 1em;
+}
+.footer-nav-sub a:hover {
+	color: aqua;
+	text-shadow: 0px 0px 20px aqua;
+}
+@media(min-width:641px) {
+	.footer-nav-sub-head {
+		font-size:3em;
+	}
+	.footer-nav-sub a {
+		font-size: 1.5em
+	}
+}
+@media(min-width:1337px) {
+	.footer-nav {
+		grid-template-columns: auto auto;
+	}
+}
+@media(min-width:1920px) {
+	.footer-nav {
+		grid-template-columns: auto auto auto auto;
+	}
 }

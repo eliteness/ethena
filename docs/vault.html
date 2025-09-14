@@ -1,66 +1,114 @@
 <!doctype html>
 <html>
-<meta charset="UTF-8">
-<head>
-<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
-<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
-<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/icons/ethena.png"/>
-<link rel="stylesheet" href="e.css"/>
+	<meta charset="UTF-8">
+	<meta name="description" content="stakeTHENA Vault - ERC4626 compliant eTHENA vault that auto-compounds BNB rewards earned from staking eTHENA into more eTHENA : eTHENA - THE First veTHE Liquid Wrapper | Eliteness.Network">
+	<meta name="keywords" content="Eliteness.Network,Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
+	<title>eTHENA : veTHE Liquid Wrapper | Eliteness.Network</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://ftm.guru/icons/ethena.png"/>
+	<link rel="stylesheet" href="e.css"/>
 	<body>
 		<div class="partnership">
-			<h1><span>Mint_ eTHENA </span></h1>
-			<h2>Convert Your Locked veTHE NFT into Liquid eTHENA Tokens</h2>
+			<h1><span>stakeTHENA_ Vault</span></h1>
+			<h2>Auto-compounding Staked eTHENA</h2>
+			<span class="light-in" style="margin: 0; font-family:light">eTHENA per stakeTHENA goes up over time by using BNB rewards to Buyback more eTHENA for depositors of this ERC4626 vault!</span>
 		</div>
 		<div class="mechanism">
 			<div class="amount">
 				<br>
 				<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
-				<div align="center">
-					<select class="equal-gradient" id="nft-sel" onchange="quote()">
-						<option value="" selected>Choose a NFT</option>
-					</select>
-				</div>
-				<p><span id="nft-bal">Balance: Loading..</span></p>
+				<!--
+				<p style="">
+					<br>
+					<span id="nft-bal" class="equal-gradient" style="border-radius: 100px;padding: 5px;margin: 5px;position: relative;bottom: 5px;">78,123,456 eTHENA</span>
+					<br>
+					<span style="font-family: light;">Available Balance</span>
+				</p>
+				-->
 			</div>
 			<div class="input-amount">
 				<br>
 				<div class="input-amount-els">
 					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/the.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg"/>
+						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png" style="border-radius:25%"/>
+						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
 					</div>
 					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-amt"><span class="prefill-num">Convert veNFTs of</span></span>
 						<div class="nft-amtl-desc">
-							Locked <b>veTHE</b>
+							Stake <b>eTHENA</b>
 						</div>
+						<input class="light-in in-box" placeholder="Enter Amount" style="margin: 0;" id="in_d">
+						<!--<button class="btn-max" onclick='$("in_d").value=$("bal_lp").textContent'>Max</button>-->
+						<span style="font-family: light_italic;">Available: </span>
+						<span style="font-family:" id="bal_lp">??????</span>
 					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="deposit(false)"><span id="claim-offer">Deposit eTHENA</span></button>
+					<button class="submit equal-gradient btn-max" onclick="deposit(true)"><span id="claim-offer">Deposit Max</span></button>
+				</div>
+				<span class="nft-amtl" id="nft-tl"></span>
+				<br>
+				<br>
+				<div class="input-amount-els">
+					<div>
+						<img class="bigthumb" src="img/bank.svg"/>
+						<img class="bigthumb_sup" src="img/ethena.png" style="opacity: 0;">
+					</div>
+					<div class="nft-amt-nums">
+						<div class="nft-amtl-desc">
+							Withdraw <b>eTHENA</b>
+						</div>
+						<input class="light-in in-box" placeholder="Enter Amount" style="margin: 0;" id="in_w">
+						<span style="font-family: light_italic;">Withdrawable: </span>
+						<span style="font-family: " id="bal_fa">??????</span>
+					</div>
+				</div>
+				<div style="margin-top: -25px;" align="center">
+					<button class="submit equal-gradient" onclick="withdraw(false)"><span id="claim-offer">Withdraw eTHENA</span></button>
+					<button class="submit equal-gradient btn-max" onclick="withdraw(true)"><span id="claim-offer">Withdraw Max</span></button>
 				</div>
 				<br>
 				<span class="nft-amtl" id="nft-tl"></span>
 				<br><br>
+
 				<div class="hr-nft"></div>
 				<br><br>
-				<div class="input-amount-els">
-					<div>
-						<img class="bigthumb" src="https://ftm.guru/icons/ethena.png"/>
-						<img class="bigthumb_sub" src="img/lock.svg" style="opacity: 0;">
-					</div>
-					<div class="nft-amt-nums">
-						<span class="nft-amtl" id="nft-offer"><span class="prefill-num">Earn BNB by staking</span></span>
-						<div class="nft-amtl-desc">
-							Liquid <b>eTHENA</b>
-						</div>
-					</div>
+				<div class="earn-stats" style="font-size:1.25em">
+					<div class="nft-amtl-desc earn-stats-key">eTHENA in Vault</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-assets">-.--</span></div>
+
+					<div class="nft-amtl-desc earn-stats-key">stakeTHENA Issued</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-shares">-.--</span></div>
+
+					<div class="nft-amtl-desc earn-stats-key">eTHENA per stakeTHENA</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-ratio">-.--</span></div>
+
+					<div class="nft-amtl-desc earn-stats-key">veTHE per stakeTHENA</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-veratio">-.--</span></div>
+
+					<div class="nft-amtl-desc earn-stats-key">Total Value Locked</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-tvlusd">$-.--</span></div>
+
+					<div class="nft-amtl-desc earn-stats-key">Annualized Yield (APY)</div>
+					<div class="nft-amtl-desc earn-stats-val"><span id="istat-apy">-.--%</span></div>
+
 				</div>
+				<br><br>
+				<span style="font-family: light_italic;font-size:0.9em">Additional Gains from THE Weekly Rebase, Minting Fees as well as the Redeem Fees get auto-compounded back to increase the amount of veTHE backing each 1 eTHENA, resulting in additional underlying gains for all eTHENA holders.
+				<br>
+				These additional gains are in veTHE and are accounted separately and not included in the above displayed APY numbers.</span>
+
+				<br><br>
+
 			</div>
+			<!--
 			<div style="margin-top: -25px;" align="center">
 				<button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Select your veNFT</span></button>
 				<br><br>
-			</div>
+			</div>-->
 		</div>
+
 
 
 	<div id="note" class="overlay">
@@ -173,7 +221,7 @@
 			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
-			<script src="e2.js"></script>
+			<script src="vault.js"></script>
 			<script>
 				CHAINID = 56;
 				RPC_URL = "https://binance.llamarpc.com";
@@ -182,7 +230,9 @@
 				CHAIN_GAS = "BNB";
 				VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
 				VENAME = "veTHE";
-				VENAMM = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
+				VENAMM_1 = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
+				VENAMM = "0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c";
+				REBASE_1 = 1673481600000;
 				POOLID = "v0.1.3";
 				BASENAME = "THE";
 				BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
@@ -193,8 +243,16 @@
 				TOKEN = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
 				TOKENLOGO = "https://ftm.guru/icons/ethena.png";
 				WRAPLOGO = "https://ftm.guru/icons/ethena.png";
+				FARM = "0x90Cda9B619b124D321111fE240F8191A72E93297";
+				FARMOLD = "0xa62a37bbf7de66ad09f4b7c2a0809dd1ac35a5fa";
 				ID = 2714;
-				VOTER = "0x62Ee96e6365ab515Ec647C065c2707d1122d7b26";
+				VOTER = "0x62Ee96e6365ab515Ec647C065c2707d1122d7b26"
+				MANAGER = "0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c";
+
+				TEARNED = [WRAP];//["0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"];
+				TEARNSYM = ["eTHENA"];
+				TEARNIMG = ["https://ftm.guru/icons/ethena.png"]
+				VAULT = "0x2273A22c982FC3ecDa6a92e3ddf15fE8b872FD74";
 			</script>
 	</body>
 </html>
