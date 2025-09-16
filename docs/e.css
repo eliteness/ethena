@@ -657,10 +657,11 @@ textarea:focus, input:focus {
 	margin: 50px auto;
 }
 .echart {
-	width: 90%;
-	height: 40vh;
+	width: 95%;
+	height: 70vh;
 	margin: 100px auto;
 }
+/*
 @media(min-width:1337px) {
 	.echarts {
 		grid-template-columns: auto auto;
@@ -668,3 +669,4 @@ textarea:focus, input:focus {
 	.echart {
 	}
 }
+*/
