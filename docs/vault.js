@@ -86,13 +86,13 @@ function fornum(n,d)
 {
 	_n=(Number(n)/10**Number(d));
 	n_=_n;
-	if(_n>1e18){n_=(_n/1e18).toFixed(3)+"Qt"}
-	else if(_n>1e15){n_=(_n/1e15).toFixed(3)+"Qd"}
-	else if(_n>1e12){n_=(_n/1e12).toFixed(3)+"T"}
-	else if(_n>1e9){n_=(_n/1e9).toFixed(3)+"B"}
-	else if(_n>1e6){n_=(_n/1e6).toFixed(3)+"M"}
-	else if(_n>1e3){n_=(_n/1e3).toFixed(3)+"K"}
-	else if(_n>1e1){n_=(_n/1e0).toFixed(3)+""}
+	if(_n>1e18){n_=(_n/1e18).toFixed(2)+"Qt"}
+	else if(_n>1e15){n_=(_n/1e15).toFixed(2)+"Qd"}
+	else if(_n>1e12){n_=(_n/1e12).toFixed(2)+"T"}
+	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+"B"}
+	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+"M"}
+	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+"K"}
+	else if(_n>1e1){n_=(_n/1e0).toFixed(2)+""}
 	else if(_n>1e0){n_=(_n/1e0).toFixed(5)+""}
 	else if(_n>0.0){n_=(_n/1e0).toFixed(8)+""}
 	return(n_);
@@ -312,8 +312,8 @@ async function gubs() {
 	$("istat-assets").innerHTML = fornum5(VI[2],18,2);
 	$("istat-shares").innerHTML = fornum5(VI[7],18,2);
 	$("istat-ratio").innerHTML = Number(VI[7])==0 ? 0 : fornum5( Number(VI[2]) / Number(VI[7]) , 0 , 6) +"x";
-	$("istat-veratio").innerHTML = Number(VI[7])==0 ? 0 : fornum( ( (Number(VI[1]) / Number(VI[5])) * (Number(VI[2])/Number(VI[7])) ) , 0 , 6) +"x";
-	$("istat-tvlusd").innerHTML = "$"+ fornum( Number(VI[0])/1e18 * Number(VI[2])/1e18 , 0 , 2) ;
+	$("istat-veratio").innerHTML = Number(VI[7])==0 ? 0 : fornum5( ( (Number(VI[1]) / Number(VI[5])) * (Number(VI[2])/Number(VI[7])) ) , 0 , 6) +"x";
+	$("istat-tvlusd").innerHTML = "$"+ fornum5( Number(VI[0])/1e18 * Number(VI[2])/1e18 , 0 , 2) ;
 	$("istat-apy").innerHTML = fornum5( ((1+Number(VI[3])/1e18/100/1000)**1000-1)*100, 0, 2) + "%";
 
 	if(!echartsPainted) {
@@ -670,7 +670,7 @@ eo_price_the = {
 
 eo_price_usd = {
   ...eo0 ,
-  title: {left: 'center', top: 10, text: "Prices Relative to THE"},
+  title: {left: 'center', top: 10, text: "Open-Market Prices in USD"},
   series: [
     {
       name: 'THE (USD Price)',
