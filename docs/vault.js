@@ -322,6 +322,8 @@ async function gubs() {
 	promptRedeposit()
 
 	if(!echartsPainted) {
+		lastComp = await VP.lastCompounded();
+		$("istats-info-lastcomp").innerHTML = "Last compounding cycle happened " + timeFormat(Number(lastComp)*1e3).replace("Expired","");
 		allsnaps = await VP.getSnapshots(0,10000,1);
 		allsnaps=allsnaps.map(i=>i.map((je,ji)=>Number(je)/((ji>0&&ji!=17)?1e18:0.001)))
 		console.log({allsnaps})
