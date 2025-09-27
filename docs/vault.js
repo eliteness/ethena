@@ -319,6 +319,8 @@ async function gubs() {
 	$("istat-tvlusd").innerHTML = "$"+ fornum5( Number(VI[0])/1e18 * Number(VI[2])/1e18 , 0 , 2) ;
 	$("istat-apy").innerHTML = fornum5( ((1+Number(VI[3])/1e18/100/1000)**1000-1)*100, 0, 2) + "%";
 
+	promptRedeposit()
+
 	if(!echartsPainted) {
 		allsnaps = await VP.getSnapshots(0,10000,1);
 		allsnaps=allsnaps.map(i=>i.map((je,ji)=>Number(je)/((ji>0&&ji!=17)?1e18:0.001)))
@@ -676,7 +678,7 @@ eo_ratios = {
       'veTHE backing per stakeTHENA': false,
       'veTHE backing per eTHENA': false
     }
-  }+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+  }
 }
 
 
