@@ -98,6 +98,8 @@ function fornum(n,d)
 	return(n_);
 }
 
+const timeFormat = (timestamp) => {const seconds = Math.floor((Date.now() - timestamp) / 1000);const prefix = seconds < 0 ? "For the next " : "Expired ";const absSeconds = Math.abs(seconds);return prefix + (absSeconds < 60 ? absSeconds + " seconds" : absSeconds < 3600 ? Math.floor(absSeconds / 60) + " minutes" : absSeconds < 86400 ? Math.floor(absSeconds / 3600) + " hours" : absSeconds < 2592000 ? Math.floor(absSeconds / 86400) + " days" : absSeconds < 31536000 ? Math.floor(absSeconds / 2592000) + " months" : Math.floor(absSeconds / 31536000) + " years") + (seconds < 0 ? "" : " ago");};
+
 async function cw()
 {
 	let cs = await cw2(); cs?console.log("Good to Transact"):cw2();
@@ -209,6 +211,7 @@ async function dexstats() {
 echartsPainted = false;
 
 function arf(){
+
 	var xfr = setInterval(function() {
 		console.log("refreshing farm stats", new Date() );
 		try {
@@ -369,7 +372,8 @@ async function gubs() {
 			tvlSharesUSD: i[2] * i[3] ,
 			tvlAssetsUSD: i[2] * i[5] ,
 		}) );
-		console.log(sd);
+		console.log(sd,"incl. 0th snap");
+		sd.pop();
 		await paintCharts(sd);
 	}
 	return;
@@ -524,9 +528,18 @@ eo_tvl_the = {
       smooth: true,
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>([i.time,i.sharesIssued.toFixed(0)])),
-      areaStyle: areaStyles[4],
+      //areaStyle: areaStyles[4],
     },
-  ]
+  ],
+  legend: {
+    ...eo0.legend,
+    show:true,
+    selected:{
+      'Total veTHE Backing': false,
+      'Total eTHENA Issued': false,
+      'eTHENA in Farmland': false,
+    }
+  }
 }
 
 
@@ -571,7 +584,15 @@ eo_tvl_usd = {
       data: TADATA.map(i=>([i.time,i.tvlSharesUSD.toFixed(0)])),
       areaStyle: areaStyles[3],
     },
-  ]
+  ],
+  legend: {
+    ...eo0.legend,
+    show:true,
+    selected:{
+      'veTHE Locked (USD)': false,
+      'eTHENA MktCap (USD)': false,
+    }
+  }
 }
 
 
@@ -608,7 +629,7 @@ eo_yields = {
 
 eo_ratios = {
   ...eo0 ,
-  title: {left: 'center', top: 10, text: "Relative Ratios"},
+  title: {left: 'center', top: 10, text: "Growth in Relative Ratios"},
   series: [
     {
       name: 'veTHE backing per stakeTHENA',
@@ -624,7 +645,7 @@ eo_ratios = {
       smooth: true,
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
-      areaStyle: areaStyles[1],
+      areaStyle: areaStyles[2],
     },
     {
       name: 'eTHENA per stakeTHENA',
@@ -632,9 +653,30 @@ eo_ratios = {
       smooth: true,
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>([i.time,i.assetsPerShare.toFixed(6)])),
-      areaStyle: areaStyles[1],
+      areaStyle: areaStyles[4],
     },
-  ]
+    {
+      name: 'THE/THE=1 Reference',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])),
+      lineStyle: {color:"black"},
+      itemStyle: {color:"black"},
+    },
+  ],
+  yAxis: {
+    ...eo0.yAxis,
+    startValue: 1,
+  },
+  legend: {
+    ...eo0.legend,
+    show:true,
+    selected:{
+      'veTHE backing per stakeTHENA': false,
+      'veTHE backing per eTHENA': false
+    }
+  }+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
 }
 
 
@@ -644,11 +686,20 @@ eo_price_the = {
   title: {left: 'center', top: 10, text: "Prices Relative to THE"},
   series: [
     {
-      name: 'THE/THE=1 Reference',
+      name: 'veTHE backing per stakeTHENA',
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(1).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      areaStyle: areaStyles[0],
+    },
+    {
+      name: 'veTHE backing per eTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      areaStyle: areaStyles[1],
     },
     {
       name: 'eTHENA/THE Market Price',
@@ -656,6 +707,7 @@ eo_price_the = {
       smooth: true,
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>([i.time,(i.priceAssetInUSD/i.priceBaseInUSD).toFixed(6)])),
+      areaStyle: areaStyles[2],
     },
     {
       name: 'stakeTHENA/THE Market Price',
@@ -663,8 +715,22 @@ eo_price_the = {
       smooth: true,
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>([i.time,(i.priceShareInUSD/i.priceBaseInUSD).toFixed(6)])),
+      areaStyle: areaStyles[3],
     },
-  ]
+    {
+      name: 'THE/THE=1 Reference',
+      type: 'line',
+      lineStyle: {color:"black"},
+      itemStyle: {color:"black"},
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])),
+    },
+  ],
+  yAxis: {
+    ...eo0.yAxis,
+    //startValue: (Math.min(...TADATA.map(i=>i.priceAssetInUSD/i.priceBaseInUSD) )*0.95).toFixed(1)
+  }
 }
 
 
@@ -825,4 +891,36 @@ async function withdraw(ismax) {
 		<u>${ fornum(amt,18).toLocaleString() } ${WRAPNAME}</u><br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
+}
+
+
+
+
+
+prompted=false;
+
+async function promptRedeposit() {
+	if (prompted == true) { return; }
+	if (prompted == false) {
+		old_v2 = new ethers.Contract(VAULT_OLD_2, VAULTABI, signer);
+		old_v3 = new ethers.Contract(VAULT_OLD_3, VAULTABI, signer);
+		let oub = await Promise.all([
+			old_v2.balanceOf(window.ethereum.selectedAddress),
+			old_v3.balanceOf(window.ethereum.selectedAddress)
+		]);
+		oub = oub.map(i=> BigInt(i));
+		if( oub[0] == 0n && oub[1] == 0n) {
+			prompted = true;
+			return;
+		}
+		else {
+			notice(`Thank you for helping test the alpha & beta versions of stakeTHENA Vault! We request you to withdraw from these old vaults and redeposit again in the new final stakeTHENA Vault. You have ${Number(oub[0])/1e18} in Old Vault 2 & ${Number(oub[1])/1e18} in Old Vault 3.<br><br>Withdrawing All from Test Vaults now ...<br><br> We will send a reward soon to your wallet for helping us! 🙏<br><br>`);
+			if(oub[0] > 0n) { await (await old_v2.redeem(oub[0], window.ethereum.selectedAddress, window.ethereum.selectedAddress)).wait(); }
+			if(oub[1] > 0n) { await (await old_v3.redeem(oub[1], window.ethereum.selectedAddress, window.ethereum.selectedAddress)).wait(); }
+			notice(`
+				<h3>Withdrawn Old Test Vault Deposits</h3>
+			`);
+			prompted = true;
+		}
+	}
 }
