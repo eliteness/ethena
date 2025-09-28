@@ -904,7 +904,7 @@ async function withdraw(ismax) {
 prompted=false;
 
 async function promptRedeposit() {
-	if (prompted == true) { return; }
+	if (prompted == true || (window?.ethereum?.selectedAddress?.length != 42)) { return; }
 	if (prompted == false) {
 		old_v2 = new ethers.Contract(VAULT_OLD_2, VAULTABI, signer);
 		old_v3 = new ethers.Contract(VAULT_OLD_3, VAULTABI, signer);
