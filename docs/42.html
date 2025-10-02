@@ -11,6 +11,7 @@
         	<div id="echart-1" class="echart" style="height:70vh"></div>
         	<div id="echart-2" class="echart" style="height:70vh"></div>
         	<div id="echart-3" class="echart" style="height:70vh"></div>
+        	<div id="echart-4" class="echart" style="height:70vh"></div>
         </div>
 
 			<script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript"></script>
@@ -40,7 +41,7 @@ eo0 = {
   yAxis: [{type:'value'},{type:'value'}],
 }
 
-async function main() {
+async function main(_lad,_pro,_echart) {
 /*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,13 +179,13 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// emissions chart
+// emissions chart - base
 	ehd = (
 		await (
 			(new ethers.Contract(
-				"0x73E01Ae0F263ac26F40558c51Cb57137944b3937",
+				_lad,
 				["function fullEmissionsHistory() external view returns(uint[5][] memory)"],
-				(new ethers.providers.JsonRpcProvider("https://mainnet.base.org"))
+				_pro
 			))
 			.fullEmissionsHistory()
 		)
@@ -331,7 +332,7 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
     		show:true,
   		}
 	}
-	echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setOption(eo_eh);
+	echart1 = echarts.init(document.getElementById(_echart_a),'dark'); echart1.setOption(eo_eh);
 
 
 
@@ -390,9 +391,13 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
 
 
 
-	echart2 = echarts.init(document.getElementById('echart-2'),'dark'); echart2.setOption(eo_ehu);
+	echart2 = echarts.init(document.getElementById(_echart_b),'dark'); echart2.setOption(eo_ehu);
 
 }
 
-main()
+main("0x73E01Ae0F263ac26F40558c51Cb57137944b3937",(new ethers.providers.JsonRpcProvider("https://mainnet.base.org")), 'echart-1', 'echart-2')
+main("0xaB492B40817e9dC5195DF543FBd8C71974855D56",(new ethers.providers.JsonRpcProvider("https://rpc.soniclabs.com")), 'echart-3', 'echart-4')
+
+
+
 </script>
