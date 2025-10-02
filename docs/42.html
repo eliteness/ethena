@@ -41,7 +41,7 @@ eo0 = {
   yAxis: [{type:'value'},{type:'value'}],
 }
 
-async function main(_lad,_pro,_echart) {
+async function main(_lad,_pro,_echarta,_echartb) {
 /*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -332,7 +332,7 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
     		show:true,
   		}
 	}
-	echart1 = echarts.init(document.getElementById(_echart_a),'dark'); echart1.setOption(eo_eh);
+	echart1 = echarts.init(document.getElementById(_echarta),'dark'); echart1.setOption(eo_eh);
 
 
 
@@ -391,7 +391,7 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
 
 
 
-	echart2 = echarts.init(document.getElementById(_echart_b),'dark'); echart2.setOption(eo_ehu);
+	echart2 = echarts.init(document.getElementById(_echartb),'dark'); echart2.setOption(eo_ehu);
 
 }
 
