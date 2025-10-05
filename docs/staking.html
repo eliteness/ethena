@@ -130,6 +130,15 @@
 
 
 
+		<div class="echarts">
+        	<div id="echart-1" class="echart"></div>
+        	<div id="echart-2" class="echart"></div>
+        	<div id="echart-3" class="echart"></div>
+        	<div id="echart-4" class="echart"></div>
+        	<div id="echart-5" class="echart"></div>
+        	<div id="echart-6" class="echart"></div>
+		</div>
+
 	<div id="note" class="overlay">
 		<div class="popup">
 			<a class="close" href="#">&times;</a>
@@ -241,9 +250,11 @@
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
 			<script src="s2.js"></script>
+			<script src="stats.js"></script>
+		    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 			<script>
 				CHAINID = 56;
-				RPC_URL = "https://binance.llamarpc.com";
+				RPC_URL = "https://bsc-dataseed.bnbchain.org";//"https://binance.llamarpc.com";
 				EXPLORE = "https://bscscan.com";
 				CHAIN_NAME = "Binance Smart Chain Mainnet";
 				CHAIN_GAS = "BNB";
@@ -270,6 +281,7 @@
 				TEARNSYM = ["WBNB"];
 				TEARNIMG = ["https://ftm.guru/icons/bnb.svg"]
 				MANAGER = "0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c";
+				VAULT = "0x5b8ce6D591c914a56CB019B3dECb63eDE22708C8"
 			</script>
 	</body>
 </html>

@@ -279,8 +279,6 @@ async function gubs() {
 	VI = VI2.map(i=>i[1]);
 	VI[1] = VI[1].substr(0,66);
 	VI = VI.map(i=>BigInt(i));
-	*/
-	/*
 	[
 		0	uint256(getAssetPriceUSD(asset())),
 		1	IVE( IEMinter( IeTHENA(asset()).minter() ).VENFT() ).locked( IEMinter( IeTHENA(asset()).minter() ).ID() ) ,
@@ -307,6 +305,19 @@ async function gubs() {
 		16	interactions,
 		17	lastSnapshot
 		];
+
+]
+
+	minter.info
+	tg.coinusd
+	tg.p_(THE)
+
+	mcalls2=[
+		{allowFailure: false, target: "0xD600Ec98cf6418c50EE051ACE53219D95AeAa134", callData: "0xedb0f3b00000000000000000000000009798a3835c8c87bd92803c3a248ae0042fbe4c6c"},
+		{allowFailure: false, target: "0xD600Ec98cf6418c50EE051ACE53219D95AeAa134", callData: "0x159fb692"},
+		{allowFailure: false, target: "0xD600Ec98cf6418c50EE051ACE53219D95AeAa134", callData: "0xedb0f3b000000000000000000000000063db6ba9e512186c2faadacef342fb4a40dc577c"},
+		{allowFailure: false, target: "0xcba004CeA7126D3BA1A09DB26cbB8F4444A1b14C", callData: "0x547b13e200000000000000000000000000000000000000000000000000000000000012340000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+	]
 	*/
 	VI = await VP.info( window.ethereum?.selectedAddress ?? SAFE_ADDR);
 
@@ -324,9 +335,12 @@ async function gubs() {
 	if(!echartsPainted) {
 		lastComp = await VP.lastCompounded();
 		$("istats-info-lastcomp").innerHTML = "Last compounding cycle happened " + timeFormat(Number(lastComp)*1e3).replace("Expired","");
-		allsnaps = await VP.getSnapshots(0,10000,1);
-		allsnaps=allsnaps.map(i=>i.map((je,ji)=>Number(je)/((ji>0&&ji!=17)?1e18:0.001)))
-		console.log({allsnaps})
+		_allsnaps = await VP.getSnapshots(0,10000,1);
+		allsnaps = _allsnaps.slice(0,_allsnaps.length-1);
+		//allsnaps = [ ...allsnaps, ...ETHENA_OLD_STATS_SNAP];
+
+		allsnaps=allsnaps.map(i=>i.map((je,ji) => Number(je) / ( ji==0 ? 0.001 : (ji<10 ? 1e18 : 1) ) ) )
+		//console.log({allsnaps,ETHENA_OLD_STATS_SNAP})
 		/*
 	struct Snapshot {
 	0	uint40 time;
@@ -346,38 +360,60 @@ async function gubs() {
 	10	uint40 interactionID;
 	11	uint40 sID;
 	}
+
+
+
+
+
+
+d4=d3.map(i=>[
+	i.timestamp,
+	i.farm?i.farm[0]:0,
+	i.mcd?i.mcd[0]:0,
+	0,
+	0,
+	i.mcd?i.mcd[3][1]:0,
+	i.farm&&i.mcd?i.farm[1]*1e18/i.mcd[3][1],
+	i.mcd?i.mcd[3][7]*1e18/i.mcd[3][1]:0,
+	i.mcd?i.mcd[0]/i.mcd[2]:0,
+	i.mcd?i.mcd[1]:0,
+	0,
+	i.dayid
+
+
 		*/
 		sd = allsnaps.map( i => ({
-			sid: i[11] ,
+			sid: i[11]  || 0,
 			time: i[0] ,
 
-			priceAssetInUSD: i[2] ,
+			priceAssetInUSD: i[2] || 0 ,
 			priceBaseInUSD: (i[2] / i[8]) ?? 0 ,
 			priceShareInUSD: (i[2] * i[3] / i[4]) || 0 ,
 
-			underlyingAPR: i[1] ,
-			expectedAPY: (( (1+i[1]/100/365)**365 -1 )*100 ) ?? 0,
-			realizedAPR_ma1: i[1] ,
-			realizedAPR_ma7: i[1] ,
-			realizedAPR_ma30: i[1] ,
+			underlyingAPR: i[1]  || 0,
+			expectedAPY: (i[0] < 1758931191e3 ? 0 : (( (1+i[1]/100/365)**365 -1 )*100 )) || 0,
+			realizedAPR_ma1: i[1]  || 0,
+			realizedAPR_ma7: i[1]  || 0,
+			realizedAPR_ma30: i[1]  || 0,
 
-			assetsTotalSupply: i[5] ,
-			assetsInFarmland: i[6]*i[5],
-			assetsInVault: i[3],
-			sharesIssued: i[4],
-			backingTotal: i[7]*i[5],
+			assetsTotalSupply: i[5]  || 0,
+			assetsInFarmland: i[6]*i[5] || 0,
+			assetsInVault: i[3] || 0,
+			sharesIssued: i[4] || 0,
+			backingTotal: i[7]*i[5] || 0,
 
 			assetsPerShare: (i[3]/i[4]) || 0,
-			backingPerAsset: i[7],
+			backingPerAsset: i[7] || 0,
 			backingPerShare: (i[7] * i[3]/i[4]) || 0 ,
 
 			tvlBackingUSD: (i[7]*i[5] * i[2] / i[8]) || 0 ,
-			tvlFarmlandUSD: i[6]*i[5] *i[2] ,
-			tvlSharesUSD: i[2] * i[3] ,
-			tvlAssetsUSD: i[2] * i[5] ,
+			tvlFarmlandUSD: i[6]*i[5] *i[2]  || 0,
+			tvlSharesUSD: i[2] * i[3]  || 0,
+			tvlAssetsUSD: i[2] * i[5]  || 0,
 		}) );
-		console.log(sd,"incl. 0th snap");
-		sd.pop();
+
+		sd.sort((a,b)=>a.time<b.time);
+		console.log(sd,"excl. 0th snap");
 		await paintCharts(sd);
 	}
 	return;
@@ -483,6 +519,19 @@ eo0 = {
   legend: { type: 'scroll', bottom:15 },
   xAxis: {type:'time'},
   yAxis: {type:'value'},
+  dataZoom: [
+    {
+      type: 'slider',
+      show: true,
+      xAxisIndex: [0],
+      start: 0,
+      end: 100
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+    },
+  ],
 }
 
 
@@ -499,7 +548,7 @@ eo_tvl_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.backingTotal.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.backingTotal.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[0],
     },
     {
@@ -507,7 +556,7 @@ eo_tvl_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.assetsTotalSupply.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.assetsTotalSupply.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[1],
     },
     {
@@ -515,7 +564,7 @@ eo_tvl_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.assetsInFarmland.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.assetsInFarmland.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[2],
     },
     {
@@ -523,7 +572,7 @@ eo_tvl_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.assetsInVault.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.assetsInVault.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[3],
     },
     {
@@ -531,7 +580,7 @@ eo_tvl_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.sharesIssued.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.sharesIssued.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       //areaStyle: areaStyles[4],
     },
   ],
@@ -561,7 +610,7 @@ eo_tvl_usd = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.tvlBackingUSD.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.tvlBackingUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[0],
     },
     {
@@ -569,7 +618,7 @@ eo_tvl_usd = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.tvlAssetsUSD.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.tvlAssetsUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[1],
     },
     {
@@ -577,7 +626,7 @@ eo_tvl_usd = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.tvlFarmlandUSD.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.tvlFarmlandUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[2],
     },
     {
@@ -585,7 +634,7 @@ eo_tvl_usd = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.tvlSharesUSD.toFixed(0)])),
+      data: TADATA.map(i=>([i.time,i.tvlSharesUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[3],
     },
   ],
@@ -611,7 +660,7 @@ eo_yields = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.expectedAPY.toFixed(2)])),
+      data: TADATA.map(i=>([i.time,i.expectedAPY.toFixed(2)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[4],
     },
     {
@@ -619,7 +668,7 @@ eo_yields = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.underlyingAPR.toFixed(2)])),
+      data: TADATA.map(i=>([i.time,i.underlyingAPR.toFixed(2)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[0],
     },
   ]
@@ -640,7 +689,7 @@ eo_ratios = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.backingPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[1],
     },
     {
@@ -648,7 +697,7 @@ eo_ratios = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[2],
     },
     {
@@ -656,7 +705,7 @@ eo_ratios = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.assetsPerShare.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.assetsPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[4],
     },
     {
@@ -664,7 +713,7 @@ eo_ratios = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(1).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       lineStyle: {color:"black"},
       itemStyle: {color:"black"},
     },
@@ -694,7 +743,7 @@ eo_price_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[0],
     },
     {
@@ -702,7 +751,7 @@ eo_price_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.backingPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[1],
     },
     {
@@ -710,7 +759,7 @@ eo_price_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD/i.priceBaseInUSD).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD/i.priceBaseInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[2],
     },
     {
@@ -718,7 +767,7 @@ eo_price_the = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(i.priceShareInUSD/i.priceBaseInUSD).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(i.priceShareInUSD/i.priceBaseInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
       areaStyle: areaStyles[3],
     },
     {
@@ -728,7 +777,7 @@ eo_price_the = {
       itemStyle: {color:"black"},
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(1).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
     },
   ],
   yAxis: {
@@ -747,21 +796,21 @@ eo_price_usd = {
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,i.priceBaseInUSD.toFixed(6)])),
+      data: TADATA.map(i=>([i.time,i.priceBaseInUSD.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
     },
     {
       name: 'eTHENA (USD Price)',
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
     },
     {
       name: 'stakeTHENA (USD Price)',
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>([i.time,(i.priceShareInUSD).toFixed(6)])),
+      data: TADATA.map(i=>([i.time,(i.priceShareInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
     },
   ]
 }

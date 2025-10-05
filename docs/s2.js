@@ -187,10 +187,17 @@ LPABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"ano
 
 MGRABI = [{"anonymous": false,"inputs": [{"indexed": true,"internalType": "address","name": "user","type": "address"},{"indexed": false,"internalType": "uint256","name": "nft","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "veAmount","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "shares","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wen","type": "uint256"}],"name": "Deposit","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"internalType": "address","name": "user","type": "address"},{"indexed": false,"internalType": "uint256","name": "nft","type": "uint256"}],"name": "Reclaim","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"internalType": "address","name": "user","type": "address"},{"indexed": false,"internalType": "uint256","name": "nft","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "veAmount","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "shares","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wen","type": "uint256"}],"name": "Withdraw","type": "event"},{"inputs": [],"name": "ELTOKEN","outputs": [{"internalType": "contract IERC20","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "ID","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "REBASE","outputs": [{"internalType": "contract IRebase","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "REDEMPTIONS","outputs": [{"internalType": "contract IRedemptions","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "VENFT","outputs": [{"internalType": "contract IVotingEscrow","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "VOTER","outputs": [{"internalType": "contract IVoter","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "claimRebase","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "dao","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "_id","type": "uint256"}],"name": "deposit","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "feesToBurn","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "feesToDao","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "floor","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_user","type": "address"},{"internalType": "address","name": "_farm","type": "address"}],"name": "getAllowance","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_contract","type": "address"}],"name": "getApr","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "getCurrentEpoch","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "getCurrentVote","outputs": [{"internalType": "uint256","name": "_id","type": "uint256"},{"internalType": "uint256","name": "_wen","type": "uint256"},{"internalType": "address[]","name": "_pools","type": "address[]"},{"internalType": "uint256[]","name": "_wt","type": "uint256[]"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_contract","type": "address"}],"name": "getTvl","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_user","type": "address"},{"internalType": "address[]","name": "_farms","type": "address[]"},{"internalType": "address[]","name": "_pricing","type": "address[]"}],"name": "info","outputs": [{"internalType": "uint256[]","name": "","type": "uint256[]"},{"internalType": "address[]","name": "","type": "address[]"},{"internalType": "uint256[]","name": "","type": "uint256[]"},{"internalType": "uint256[]","name": "","type": "uint256[]"},{"internalType": "uint256[]","name": "","type": "uint256[]"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_vo","type": "address"},{"internalType": "address","name": "_el","type": "address"},{"internalType": "uint256","name": "_id","type": "uint256"}],"name": "initialize","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"},{"internalType": "address","name": "","type": "address"},{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "bytes","name": "","type": "bytes"}],"name": "onERC721Received","outputs": [{"internalType": "bytes4","name": "","type": "bytes4"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "paused","outputs": [{"internalType": "bool","name": "","type": "bool"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"},{"internalType": "uint256","name": "","type": "uint256"}],"name": "pendingRedemptions","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "price","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "publicPanic","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "_id","type": "uint256"}],"name": "quote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "_inc","type": "uint256"}],"name": "rawQuote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "reclaim","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "_t","type": "address"},{"internalType": "uint256","name": "_a","type": "uint256"}],"name": "rescue","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "d","type": "address"}],"name": "setDAO","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "_d","type": "uint256"},{"internalType": "uint256","name": "_b","type": "uint256"}],"name": "setFees","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "_f","type": "uint256"}],"name": "setFloor","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "_id","type": "uint256"}],"name": "setID","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "bool","name": "_p","type": "bool"}],"name": "setPaused","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "contract IRebase","name": "_r","type": "address"}],"name": "setRebase","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "contract IRedemptions","name": "_r","type": "address"}],"name": "setRedemptions","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "_m","type": "address"},{"internalType": "bool","name": "_b","type": "bool"}],"name": "setVoteManager","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address[]","name": "_p","type": "address[]"},{"internalType": "uint256[]","name": "_w","type": "uint256[]"}],"name": "vote","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "_mi","type": "uint256"}],"name": "voteFrom","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "voteManager","outputs": [{"internalType": "bool","name": "","type": "bool"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "voteReset","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"}],"name": "votedPools","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "votedTime","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"}],"name": "votedWeights","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "_tamt","type": "uint256"}],"name": "withdraw","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "nonpayable","type": "function"}];
 
+VAULTABI = [{"inputs":[{"internalType":"contract IElitenessFarmland","name":"farm_","type":"address"},{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"contract IPriceGuru","name":"_pg","type":"address"},{"internalType":"address","name":"_rew","type":"address"},{"internalType":"address","name":"_comp","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"allowance","type":"uint256"},{"internalType":"uint256","name":"needed","type":"uint256"}],"name":"ERC20InsufficientAllowance","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"needed","type":"uint256"}],"name":"ERC20InsufficientBalance","type":"error"},{"inputs":[{"internalType":"address","name":"approver","type":"address"}],"name":"ERC20InvalidApprover","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"ERC20InvalidReceiver","type":"error"},{"inputs":[{"internalType":"address","name":"sender","type":"address"}],"name":"ERC20InvalidSender","type":"error"},{"inputs":[{"internalType":"address","name":"spender","type":"address"}],"name":"ERC20InvalidSpender","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint256","name":"assets","type":"uint256"},{"internalType":"uint256","name":"max","type":"uint256"}],"name":"ERC4626ExceededMaxDeposit","type":"error"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint256","name":"shares","type":"uint256"},{"internalType":"uint256","name":"max","type":"uint256"}],"name":"ERC4626ExceededMaxMint","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"shares","type":"uint256"},{"internalType":"uint256","name":"max","type":"uint256"}],"name":"ERC4626ExceededMaxRedeem","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"assets","type":"uint256"},{"internalType":"uint256","name":"max","type":"uint256"}],"name":"ERC4626ExceededMaxWithdraw","type":"error"},{"inputs":[{"internalType":"address","name":"token","type":"address"}],"name":"SafeERC20FailedOperation","type":"error"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"oldr","type":"address"},{"indexed":false,"internalType":"address","name":"newr","type":"address"}],"name":"AdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"old","type":"address"},{"indexed":false,"internalType":"address","name":"newer","type":"address"}],"name":"CompounderChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"sender","type":"address"},{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint256","name":"assets","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"shares","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"increment","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"assets","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"shares","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"HardWork","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"bool","name":"prev","type":"bool"},{"indexed":false,"internalType":"bool","name":"next","type":"bool"}],"name":"IsHardWorkingChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Recovered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"sTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sUnderlyingAPR","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sAssetPriceUSD","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sAssets","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sShares","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sAssetTotalSupply","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sassetsInFarmlandRatio","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sVeBackingAssetRatio","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sAssetPriceInBase","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sCoinPriceUSD","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sInteractionID","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"sID","type":"uint256"}],"name":"VaultSnapshot","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"sender","type":"address"},{"indexed":true,"internalType":"address","name":"receiver","type":"address"},{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint256","name":"assets","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"shares","type":"uint256"}],"name":"Withdraw","type":"event"},{"inputs":[],"name":"FARMLAND","outputs":[{"internalType":"contract IElitenessFarmland","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PriceGuru","outputs":[{"internalType":"contract IPriceGuru","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"apr","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"asset","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"bamt","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"nr_","type":"address"}],"name":"changeAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"compounder","outputs":[{"internalType":"contract ICompounder","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"shares","type":"uint256"}],"name":"convertToAssets","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"assets","type":"uint256"}],"name":"convertToShares","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"assets","type":"uint256"},{"internalType":"address","name":"receiver","type":"address"}],"name":"deposit","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"doHardWork","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"expectedRewards","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_a","type":"address"}],"name":"getAssetPriceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_offsetLast","type":"uint256"},{"internalType":"uint256","name":"_points","type":"uint256"},{"internalType":"uint256","name":"_window","type":"uint256"}],"name":"getSnapshots","outputs":[{"components":[{"internalType":"uint40","name":"time","type":"uint40"},{"internalType":"uint88","name":"underlyingAPR","type":"uint88"},{"internalType":"uint128","name":"assetPriceUSD","type":"uint128"},{"internalType":"uint128","name":"assets","type":"uint128"},{"internalType":"uint128","name":"shares","type":"uint128"},{"internalType":"uint112","name":"assetTotalSupply","type":"uint112"},{"internalType":"uint64","name":"assetsInFarmlandRatio","type":"uint64"},{"internalType":"uint80","name":"veBackingAssetRatio","type":"uint80"},{"internalType":"uint80","name":"assetPriceInBase","type":"uint80"},{"internalType":"uint96","name":"coinPriceUSD","type":"uint96"},{"internalType":"uint40","name":"interactionID","type":"uint40"},{"internalType":"uint40","name":"sID","type":"uint40"}],"internalType":"struct elitenessERC4626Base.Snapshot[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"who","type":"address"}],"name":"info","outputs":[{"internalType":"uint256[18]","name":"","type":"uint256[18]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"interactions","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isExpectedReward","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isHardWorking","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastCompounded","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastSnapshot","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"maxDeposit","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"maxMint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"maxRedeem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"maxWithdraw","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"shares","type":"uint256"},{"internalType":"address","name":"receiver","type":"address"}],"name":"mint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_index","type":"uint256"}],"name":"popExpectedRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"assets","type":"uint256"}],"name":"previewDeposit","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"shares","type":"uint256"}],"name":"previewMint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"shares","type":"uint256"}],"name":"previewRedeem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"assets","type":"uint256"}],"name":"previewWithdraw","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"_rts","type":"address[]"}],"name":"pushExpectedRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"shares","type":"uint256"},{"internalType":"address","name":"receiver","type":"address"},{"internalType":"address","name":"owner","type":"address"}],"name":"redeem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"},{"internalType":"address","name":"_token","type":"address"},{"internalType":"address","name":"_to","type":"address"}],"name":"rescue","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_c","type":"address"}],"name":"setCompounder","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_b","type":"bool"}],"name":"setIsHardWorking","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract IPriceGuru","name":"_pg","type":"address"}],"name":"setPriceGuru","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"shouldDoHardWork","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"snapshots","outputs":[{"internalType":"uint40","name":"time","type":"uint40"},{"internalType":"uint88","name":"underlyingAPR","type":"uint88"},{"internalType":"uint128","name":"assetPriceUSD","type":"uint128"},{"internalType":"uint128","name":"assets","type":"uint128"},{"internalType":"uint128","name":"shares","type":"uint128"},{"internalType":"uint112","name":"assetTotalSupply","type":"uint112"},{"internalType":"uint64","name":"assetsInFarmlandRatio","type":"uint64"},{"internalType":"uint80","name":"veBackingAssetRatio","type":"uint80"},{"internalType":"uint80","name":"assetPriceInBase","type":"uint80"},{"internalType":"uint96","name":"coinPriceUSD","type":"uint96"},{"internalType":"uint40","name":"interactionID","type":"uint40"},{"internalType":"uint40","name":"sID","type":"uint40"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"takeSnapshot","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"totalAssets","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"tvl","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"assets","type":"uint256"},{"internalType":"address","name":"receiver","type":"address"},{"internalType":"address","name":"owner","type":"address"}],"name":"withdraw","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"}];
+
+echartsPainted = false;
+
 function arf(){
 	var xfr = setInterval(function() {
 		console.log("refreshing farm stats", new Date() );
-		try { if( ethers.utils.isAddress(window.ethereum.selectedAddress) ) {gubs();} }
+		try {
+			if( ethers.utils.isAddress(window.ethereum.selectedAddress) ) {gubs();}
+			if(!echartsPainted) { makeCharts({isPrePro:false}) }
+		}
 		catch(e) { console.log('hmm..'); }
 	}, 15000);
 }
@@ -220,6 +227,7 @@ async function gubs() {
 
 async function pre_stats() {
 	prepro = new ethers.providers.JsonRpcProvider(RPC_URL)
+	if(!echartsPainted) { makeCharts({isPrePro:true}) }
 	lp = new ethers.Contract(WRAP, LPABI, prepro);
 	fa = new ethers.Contract(FARM, FARABI, prepro);
 	vm = new ethers.Contract(VENAMM,VMABI, prepro);
@@ -301,6 +309,484 @@ async function pre_stats() {
 	$("bal_tot_apr").innerHTML = fornum5(rb_apy + bal[1][0]/1e18, 0, 2);
 	//console.log("bal t/a: ", fornum(bal[0],18), fornum(bal[1][0],18) )
 }
+
+async function makeCharts(_mconf) {
+
+		VP = new ethers.Contract( VAULT, VAULTABI, (_mconf.isPrePro ? prepro : provider) );
+
+		_allsnaps = await VP.getSnapshots(0,10000,1);
+		allsnaps = _allsnaps.slice(0,_allsnaps.length-1);
+
+		allsnaps = [ ...allsnaps, ...ETHENA_OLD_STATS_SNAP];
+
+		allsnaps=allsnaps.map(i=>i.map((je,ji) => Number(je) / ( ji==0 ? 0.001 : (ji<10 ? 1e18 : 1) ) ) )
+		//console.log({allsnaps,ETHENA_OLD_STATS_SNAP})
+
+
+		sd = allsnaps.map( i => ({
+			sid: i[11]  || 0,
+			time: i[0] ,
+
+			priceAssetInUSD: i[2] || 0 ,
+			priceBaseInUSD: (i[2] / i[8]) ?? 0 ,
+			priceShareInUSD: (i[2] * i[3] / i[4]) || 0 ,
+
+			underlyingAPR: i[1]  || 0,
+			expectedAPY: (i[0] < 1758931191e3 ? 0 : (( (1+i[1]/100/365)**365 -1 )*100 )) || 0,
+			realizedAPR_ma1: i[1]  || 0,
+			realizedAPR_ma7: i[1]  || 0,
+			realizedAPR_ma30: i[1]  || 0,
+
+			assetsTotalSupply: i[5]  || 0,
+			assetsInFarmland: i[6]*i[5] || 0,
+			assetsInVault: i[3] || 0,
+			sharesIssued: i[4] || 0,
+			backingTotal: i[7]*i[5] || 0,
+
+			assetsPerShare: (i[3]/i[4]) || 0,
+			backingPerAsset: i[7] || 0,
+			backingPerShare: (i[7] * i[3]/i[4]) || 0 ,
+
+			tvlBackingUSD: (i[7]*i[5] * i[2] / i[8]) || 0 ,
+			tvlFarmlandUSD: i[6]*i[5] *i[2]  || 0,
+			tvlSharesUSD: i[2] * i[3]  || 0,
+			tvlAssetsUSD: i[2] * i[5]  || 0,
+		}) );
+
+		sd.sort((a,b)=>a.time<b.time);
+		console.log(sd,"excl. 0th snap");
+		await paintCharts(sd);
+
+}
+
+
+async function paintCharts(TADATA) {
+// constants
+areaStyles = [
+	  {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(255, 191, 0)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(224, 62, 76)'
+          }
+        ])
+      },
+      {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(255, 0, 135)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(135, 0, 157)'
+          }
+        ])
+      },
+      {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(55, 162, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(116, 21, 219)'
+          }
+        ])
+      },
+      {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(0, 221, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(77, 119, 255)'
+          }
+        ])
+      },
+      {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(128, 255, 165)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(1, 191, 236)'
+          }
+        ])
+      },
+].reverse()
+
+
+
+// priceUSD - THE, eTHENA, stakeTHENA
+// priceTHE - THE/THE=(1), eTHENA/THE, stakeTHENA/THE
+// ratios - veTHE per eTHENA, veTHE per stakeTHENA
+// yields - instantaneous APR, instantaneous APY, 7-snap avgs, 30-snap avgs
+// TVL_USD - veTHE held, eTHENA mktcap, Farmland TVL, stakeTHENA TVL
+// TVL_THE - veTHE held, eTHENA supply, farmland supply, stakeTHENA isssued, eTHENA in Farmland
+
+eo0 = {
+  toolbox: {
+    feature: {
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar'] },
+      restore: { show: true },
+      saveAsImage: { show: true },
+    },
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: { type: 'scroll', bottom:"10%" },
+  xAxis: {type:'time'},
+  yAxis: {type:'value'},
+  dataZoom: [
+    {
+      type: 'slider',
+      show: true,
+      xAxisIndex: [0],
+      start: 80,
+      end: 100,
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+    },
+  ],
+  showLoading: true,
+  height: "66.67%"
+}
+
+
+
+
+
+
+eo_tvl_the = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Growth in Token amounts"},
+  series: [
+    {
+      name: 'Total veTHE Backing',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingTotal.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[0],
+    },
+    {
+      name: 'Total eTHENA Issued',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.assetsTotalSupply.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[1],
+    },
+    {
+      name: 'eTHENA in Farmland',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.assetsInFarmland.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[2],
+    },
+    {
+      name: 'eTHENA in Vault',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.assetsInVault.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[3],
+    },
+    {
+      name: 'stakeTHENA Issued',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.sharesIssued.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      //areaStyle: areaStyles[4],
+    },
+  ],
+  legend: {
+    ...eo0.legend,
+    show:true,
+    selected:{
+      'Total veTHE Backing': true,
+      'Total eTHENA Issued': true,
+      'eTHENA in Farmland': true,
+      'eTHENA in Vault': true,
+      'stakeTHENA Issued': true
+    }
+  }
+}
+
+
+
+
+
+
+
+eo_tvl_usd = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Growth in TVL (in USD)"},
+  series: [
+    {
+      name: 'veTHE Locked (USD)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.tvlBackingUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[0],
+    },
+    {
+      name: 'eTHENA MktCap (USD)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.tvlAssetsUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[1],
+    },
+    {
+      name: 'Staking TVL (USD)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.tvlFarmlandUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[2],
+    },
+    {
+      name: 'TVL in stakeTHENA (USD)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.tvlSharesUSD.toFixed(0)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[3],
+    },
+  ],
+  legend: {
+    ...eo0.legend,
+    show:true,
+    selected:{
+      'eTHENA MktCap (USD)': true,
+      'Staking TVL (USD)': true,
+      'TVL in stakeTHENA (USD)': true,
+      'veTHE Locked (USD)': true,
+    }
+  }
+}
+
+
+
+
+eo_yields = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Historical Yields"},
+  series: [
+    {
+      name: 'stakeTHENA Vault APY',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.expectedAPY.toFixed(2)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[4],
+    },
+    {
+      name: 'Direct Staking APR',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.underlyingAPR.toFixed(2)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[0],
+    },
+  ]
+}
+
+
+
+
+
+
+
+eo_ratios = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Growth in Relative Ratios"},
+  series: [
+    {
+      name: 'veTHE backing per stakeTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[1],
+    },
+    {
+      name: 'veTHE backing per eTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[2],
+    },
+    {
+      name: 'eTHENA per stakeTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.assetsPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[4],
+    },
+    {
+      name: 'THE/THE=1 Reference',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      lineStyle: {color:"black"},
+      itemStyle: {color:"black"},
+    },
+  ],
+  yAxis: {
+    ...eo0.yAxis,
+    startValue: 1,
+  },
+  legend: {
+    ...eo0.legend,
+    show:true,
+    //selected:{
+    //  'veTHE backing per stakeTHENA': false,
+    //  'veTHE backing per eTHENA': false
+    //}
+  }
+}
+
+
+
+eo_price_the = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Prices Relative to THE"},
+  series: [
+    {
+      name: 'veTHE backing per stakeTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingPerShare.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[0],
+    },
+    {
+      name: 'veTHE backing per eTHENA',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.backingPerAsset.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[1],
+    },
+    {
+      name: 'eTHENA/THE Market Price',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD/i.priceBaseInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[2],
+    },
+    {
+      name: 'stakeTHENA/THE Market Price',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(i.priceShareInUSD/i.priceBaseInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+      areaStyle: areaStyles[3],
+    },
+    {
+      name: 'THE/THE=1 Reference',
+      type: 'line',
+      lineStyle: {color:"black"},
+      itemStyle: {color:"black"},
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(1).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+    },
+  ],
+  yAxis: {
+    ...eo0.yAxis,
+    //startValue: (Math.min(...TADATA.map(i=>i.priceAssetInUSD/i.priceBaseInUSD) )*0.95).toFixed(1)
+  }
+}
+
+
+eo_price_usd = {
+  ...eo0 ,
+  title: {left: 'center', top: 10, text: "Open-Market Prices in USD"},
+  series: [
+    {
+      name: 'THE (USD Price)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,i.priceBaseInUSD.toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+    },
+    {
+      name: 'eTHENA (USD Price)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(i.priceAssetInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+    },
+    {
+      name: 'stakeTHENA (USD Price)',
+      type: 'line',
+      smooth: true,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>([i.time,(i.priceShareInUSD).toFixed(6)])).filter(i=>isFinite(i[1])&&Number(i[1])!=0),
+    },
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setOption(eo_tvl_the);
+echart2 = echarts.init(document.getElementById('echart-2'),'dark');	echart2.setOption(eo_tvl_usd);
+echart3 = echarts.init(document.getElementById('echart-3'),'dark'); echart3.setOption(eo_yields);
+echart4 = echarts.init(document.getElementById('echart-4'),'dark'); echart4.setOption(eo_ratios);
+echart5 = echarts.init(document.getElementById('echart-5'),'dark');	echart5.setOption(eo_price_the);
+echart6 = echarts.init(document.getElementById('echart-6'),'dark');	echart6.setOption(eo_price_usd);
+
+
+
+echartsPainted = true;
+}
+
+
+
 
 async function deposit(ismax) {
 	lp = new ethers.Contract(WRAP, LPABI, signer);

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="description" content="eTHENA: veTHE Liquid Wrapper | FTM.guru">
+	<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, BSC, Binance Smart Chain, defi, Airdrop, THE, Thena.fi, veNFT, Solidly, Thena, Fantom Opera, FTM">
+	<title>eTHENA: veTHE Liquid Wrapper | FTM.guru</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://ftm.guru/icons/ethena.png"/>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+    <div id="note" class="overlay">
+        <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <div class="content" id="content1">
+                Welcome!
+            </div>
+        </div>
+    </div>
+
+    <div class="topnav">
+        <div class="topnav-left">
+            <a href="https://eliteness.network/elocks">
+                <img src="https://ftm.guru/icons/ethena.png" alt="Logo" height="48px">
+            </a>
+            <a href="https://eliteness.network">ELITENESS<br>NETWORK</a>
+        </div>
+        <div class="topnav-right">
+            <p id="p_cw">
+                <span id="cw" onclick="cw()"><button id="cw_og" class="submit equal-gradient">Connect wallet</button></span>
+            </p>
+        </div>
+    </div>
+
+    <div id="main-area">
+        <div class="headline">
+            <div class="headline-keyword">eTHENA Layer 2 Ichi Farm</div>
+            Stake Your Ichi-Vaulted eTHENA/BNB Thena CL tokens to Earn ETHENA Rewards!
+        </div>
+
+        <!-- <div class="page-heading">
+            <img src="https://ftm.guru/icons/lock.svg" alt="Lock Icon">
+            <a href="https://eliteness.network/elocks">eLOCKS</a>
+            ≻ <a>Overview</a>
+        </div> -->
+
+        <div class="topstats">
+            <div class="topstat" onclick="document.getElementsByClassName('tablinks')[2].click();window.location='#Explore'">
+                <div id="topstat-apr">-.--%</div>
+                <div>Yield APR</div>
+            </div>
+            <div class="topstat">
+                <div id="topstat-tvl">$-.--</div>
+                <div>Total Value Locked</div>
+            </div>
+            <div class="topstat">
+                <div id="topstat-dom">-.--% of MLP</div>
+                <div>Dominance</div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Mint')" id="tablinks_Mint">Mint</button>
+            <button class="tablinks" onclick="openTab(event, 'Stake')" id="tablinks_Stake">Stake</button>
+            <button class="tablinks" onclick="openTab(event, 'Claim')" id="tablinks_Claim">Claim</button>
+            <button class="tablinks" onclick="openTab(event, 'Unstake')" id="tablinks_Unstake">Unstake</button>
+            <button class="tablinks" onclick="openTab(event, 'Redeem')" id="tablinks_Redeem">Redeem</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Mint" class="tabcontent">
+            <div class="c2a">
+                <form>
+                    <h2>Mint IchiLP-eTHENA/WBNB</h2>
+					Deposit eTHENA to get { 80% eTHENA + 20% BNB } CL Reciept from Ichi
+					<br><br><br><br>
+                    <div class="form-item-container">
+                        <label for="">1. Acquire eTHENA tokens</label>
+                        <div class="hint"><a href="https://eliteness.network/ethena" target="_blank">Mint with veTHE</a> or <a href="https://swap.defillama.com/?chain=bsc&from=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c&to=0xafbe3b8b0939a5538de32f7752a78e08c8492295" target="_blank">Buy on a DEX</a>.</div>
+                    </div>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">2. Enter amount of eTHENA to Deposit</label>
+                        <div class="hint" id="mint-bal">Balance: -.-- eTHENA</div>
+                        <input required class="in-box" id="mint-amt" type="number" placeholder="1337" step="1" min="1">
+                    </div>
+                    <button type="submit" class="c2a-1 submit equal-gradient" onclick="mint()">Mint eTHENA CL receipts</button>
+                    <br><br><br>
+                    <div class="form-item-container">
+                        <label for="">3. Stake CL receipts to start Earning!</label>
+                        <div class="hint" onclick="openTab(event,'Stake');">Switch to Stake tab.</div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+        <!-- Tab content -->
+        <div id="Stake" class="tabcontent">
+            <div class="c2a">
+                <form>
+                    <h2>Stake eliteMorphexMLP</h2>
+					Deposit into Gauge Farm to Earn Rewards!
+					<div class="hint" id="stake-tvl">TVL: $-.--</div>
+					<br><br>
+                    <div class="form-item-container">
+                        <label for="">1. Mint</label>
+                        <div class="hint" onclick="openTab(event,'Mint');">Switch to Mint tab.</div>
+                    </div>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">2. Enter amount to Stake</label>
+                        <div class="hint" id="stake-bal">Balance: -.-- eliteMorphexMLP</div>
+                        <input required class="in-box" id="stake-amt" type="number" placeholder="1337" step="1" min="1">
+                    </div>
+                    <button type="submit" class="c2a-1 submit equal-gradient" onclick="stake()">Stake eliteMorphexMLP</button>
+                    <br><br><br>
+                    <div class="form-item-container">
+                        <label for="">3. View & Claim Rewards!</label>
+                        <div class="hint" onclick="openTab(event,'Claim');">Switch to Claim tab.</div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+        <!-- Tab content -->
+        <div id="Claim" class="tabcontent">
+            <div class="c2a">
+                <form>
+                    <h2>Your Rewards</h2>
+					View and Claim all Your Earnings!
+					<br><br><br><br>
+                    <div class="form-item-container" id="claim-info">
+                    </div>
+                    <button type="submit" class="c2a-1 submit equal-gradient" onclick="claim()">Claim Rewards</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+        <!-- Tab content -->
+        <div id="Unstake" class="tabcontent">
+            <div class="c2a">
+                <form>
+                    <h2>Un-Stake eliteMorphexMLP</h2>
+					Withdraw tokens from Staking Gauge
+					<br><br><br><br>
+                    <div class="form-item-container">
+                        <label for="">1. Unstake</label>
+                        <div class="hint" onclick="openTab(event,'Mint');">Switch to Unstake tab.</div>
+                    </div>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">2. Enter amount to Withdraw</label>
+                        <div class="hint" id="unstake-bal">Balance: -.-- eliteMorphexMLP</div>
+                        <input required class="in-box" id="unstake-amt" type="number" placeholder="1337" step="1" min="1">
+                    </div>
+                    <button type="submit" class="c2a-1 submit equal-gradient" onclick="unstake()">Unstake eliteMorphexMLP</button>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">3. Withdraw</label>
+                        <div class="hint" onclick="openTab(event,'Redeem');">Switch to Withdraw tab.<br>Or use eliteMorphexMLP elsewhere!</div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+        <!-- Tab content -->
+        <div id="Redeem" class="tabcontent">
+            <div class="c2a">
+                <form>
+                    <h2>Redeem eliteMorphexMLP</h2>
+					Unwrap 1:1 to MLP at anytime!
+					<br><br><br><br>
+                    <div class="form-item-container">
+                        <label for="">1. Unstake</label>
+                        <div class="hint" onclick="openTab(event,'Mint');">Switch to Unstake tab.</a></div>
+                    </div>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">2. Enter amount to unwrap</label>
+                        <div class="hint" id="redeem-bal">Balance: -.-- eliteMorphexMLP</div>
+                        <input required class="in-box" id="redeem-amt" type="number" placeholder="1337" step="1" min="1">
+                    </div>
+                    <button type="submit" class="c2a-1 submit equal-gradient" onclick="redeem()">Redeem eliteMorphexMLP</button>
+                    <br><br>
+                    <div class="form-item-container">
+                        <label for="">3. Break MLP</label>
+                        <div class="hint"><a href="https://morphex.trade/liquidity" target="_blank">Visit Morphex.Trade to break MLP</a></div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+        	<h2>Powered by Guru Network</h2>
+        	<div class="social">
+            	<a target="_blank" href="https://discord.gg/QpyfMarNrV"><img src="https://ftm.guru/icons/discord.svg" alt="Discord"></a>
+            	<a target="_blank" href="https://twitter.com/FTM1337"><img src="https://ftm.guru/icons/twitter.svg" alt="Twitter"></a>
+            	<a target="_blank" href="https://dune.com/eliteness"><img src="https://ftm.guru/icons/dune.svg" alt="Dune"></a>
+            	<a target="_blank" href="https://defillama.com/protocol/guru-network-dao"><img src="https://ftm.guru/icons/defillama.svg" alt="Defillama"></a>
+            	<a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm.guru/icons/cmc.svg" alt="CoinMarketCap"></a>
+            	<a target="_blank" href="https://ftm.guru/docs"><img src="https://ftm.guru/icons/docs.svg" alt="Docs"></a>
+        	</div>
+		</footer>
+    </div>
+
+    <!-- Ignore Below Block : Dev Logs -->
+    <div style="display:none">
+        <span id="cw_m"></span>
+        <div id="connect">
+            Please connect your web3 wallet.
+            <button onclick="cw()" id="btn-connect">Connect</button>
+        </div>
+        <div id="switch">
+            <b id="btn-switch" onclick="cw()">
+                <span id="cw"></span>
+            </b>
+            <div>Balance: <b id="usb-mtv">?</b> USDC</div>
+            <span>Wallet at Fantom Opera. <a href="index.html" style="color:aqua;">Change?</a></span>
+        </div>
+    </div>
+    <!-- Ignore Above Block : Dev Logs -->
+
+    <script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>
+    <script src="index.js"></script>
+    <script>
+        RPC_URL = "https://rpc.ankr.com/bsc";
+        CHAINID = 56;
+        CHAIN_NAME = "Binance Smart Chain";
+        CHAIN_GAS = "BNB";
+        DECIMAL = 18;
+        EXPLORE = "https://bscscan.com/";
+        EXPLORT = EXPLORE + "tx/";
+        EXPLORA = EXPLORE + "address/";
+        TVLGURU = "0x0786c3a78f5133f08c1c70953b8b10376bc6dcad";
+        NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+        NATIVE_NAME = "BNB";
+        NATIVE_LOGO = "https://ftm.guru/icons/bnb.svg";
+        LOGOS = "https://cdn.jsdelivr.net/gh/unified-defi/equalizer-tokens@latest/fantom/tokens/128x128/";
+
+		BASE = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
+		BASE_NAME = "eTHENA";
+		BASE_LOGO = "https://ftm.guru/icons/ethena.png";
+
+		WRAP = "0xCE71693a998D7cE11714A6B80f8De90C994ad198";
+		WRAP_NAME = "IchiLP-eTHENA/WBNB";
+		WRAP_LOGO = "https://ftm.guru/icons/ethena.png";
+
+		MANAGER = "0x0b5f2839513D64FFD034a928f763800974cacaba";
+		SMART_MANAGER = "0x0b5f2839513D64FFD034a928f763800974cacaba";
+
+		FARM = "0x555aa3101d034bb426cc53f5ddc992add7045bb4";
+		TEARNED = ["0xafbe3b8b0939a5538DE32f7752A78e08C8492295"];
+		TEARNED_LOGO = ["https://ftm.guru/icons/ethena.png"];
+		TEARNED_NAME = ["eTHENA"];
+
+		VOTER = "";
+
+
+
+
+    </script>
+</body>
+</html>
