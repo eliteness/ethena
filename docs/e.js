@@ -224,17 +224,26 @@ async function quote() {
 			uint[] memory,
 			uint[] memory
 	 */
+	/*
 	qd = await Promise.all([
 		{amount: _mi[0][7]}, //ve.locked(ID),
 		ve.locked(_id),
 		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	]);
+	*/
+	qd = await Promise.all([
+		ve.locked(ID),
+		ve.locked(_id),
+		_mi.quote(_id),
+		ve.balanceOfNFT(_id)
+	]);
 	console.log("quoted: ",qd);
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
-	_ts = Number(qd[2]);
-	_amt = (_inc * _ts) / _base;
+	//_ts = Number(qd[2]);
+	//_amt = (_inc * _ts) / _base;
+	_amt = Number(qd[2]);
 	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	$("nft-amt").innerHTML = fornum(qd[3],18);
 	$("nft-tl").innerHTML = `${ fornum(_inc,18) } ${BASENAME}, locked for ${_tlw} Weeks`;
@@ -330,17 +339,26 @@ async function sell() {
 			uint[] memory,
 			uint[] memory
 	 */
+	 /*
 	qd = await Promise.all([
 		{amount: _mi[0][7]}, //ve.locked(ID),
 		ve.locked(_id),
 		wrap.totalSupply(),
 		ve.balanceOfNFT(_id)
 	]);
+	*/
+	qd = await Promise.all([
+		ve.locked(ID),
+		ve.locked(_id),
+		_mi.quote(_id),
+		ve.balanceOfNFT(_id)
+	]);
 	console.log("sell.quoted: ",qd);
 	_base = Number(qd[0].amount);
 	_inc = Number(qd[1].amount);
-	_ts = Number(qd[2]);
-	_amt = (_inc * _ts) / _base;
+	//_ts = Number(qd[2]);
+	//_amt = (_inc * _ts) / _base;
+	_amt = Number(qd[2]);
 	_tlw = (Number(qd[1].end)/86400/7 - Date.now()/86400000/7).toFixed();
 	_q = [
 		_amt,
