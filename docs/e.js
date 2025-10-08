@@ -235,7 +235,7 @@ async function quote() {
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
-		_mi.quote(_id),
+		vm.quote(_id),
 		ve.balanceOfNFT(_id)
 	]);
 	console.log("quoted: ",qd);
@@ -350,7 +350,7 @@ async function sell() {
 	qd = await Promise.all([
 		ve.locked(ID),
 		ve.locked(_id),
-		_mi.quote(_id),
+		vm.quote(_id),
 		ve.balanceOfNFT(_id)
 	]);
 	console.log("sell.quoted: ",qd);
