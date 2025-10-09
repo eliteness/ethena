@@ -335,12 +335,17 @@ async function gubs() {
 	if(!echartsPainted) {
 		lastComp = await VP.lastCompounded();
 		$("istats-info-lastcomp").innerHTML = "Last compounding cycle happened " + timeFormat(Number(lastComp)*1e3).replace("Expired","");
+
 		_allsnaps = await VP.getSnapshots(0,10000,1);
 		allsnaps = _allsnaps.slice(0,_allsnaps.length-1);
-		//allsnaps = [ ...allsnaps, ...ETHENA_OLD_STATS_SNAP];
+		//ETHENA_OLD_STATS_SNAP.pop()
+		//allsnaps = [ ...ETHENA_OLD_STATS_SNAP , ...allsnaps.reverse(), ];
+		allsnaps = allsnaps.reverse();
 
 		allsnaps=allsnaps.map(i=>i.map((je,ji) => Number(je) / ( ji==0 ? 0.001 : (ji<10 ? 1e18 : 1) ) ) )
 		//console.log({allsnaps,ETHENA_OLD_STATS_SNAP})
+
+
 		/*
 	struct Snapshot {
 	0	uint40 time;
@@ -516,7 +521,7 @@ eo0 = {
       }
     }
   },
-  legend: { type: 'scroll', bottom:15 },
+  legend: { type: 'scroll', bottom:"10%" },
   xAxis: {type:'time'},
   yAxis: {type:'value'},
   dataZoom: [
@@ -525,14 +530,17 @@ eo0 = {
       show: true,
       xAxisIndex: [0],
       start: 0,
-      end: 100
+      end: 100,
     },
     {
       type: 'inside',
       xAxisIndex: [0],
     },
   ],
+  showLoading: true,
+  height: "66.67%"
 }
+
 
 
 

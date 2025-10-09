@@ -32,10 +32,37 @@ body {
 	background-position: cover;
 	background-size: 100% 100%;
 }
-
 small {
 	color: white;
 	font-family: sans-serif;
+}
+.topnav {
+	background: #f0f1;
+	backdrop-filter: blur(10px);
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+	align-items: center;
+	padding: 10px 5%;
+}
+.topnav-left-text {
+	display: none;
+}
+@media(min-width:641px) {
+	.topnav-left-text {
+		display: revert;
+	}
+}
+.topnav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: italic;
+    font-weight: bold;
+}
+.topnav-left img {
+    margin-right: 10px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .partnership, .extra {

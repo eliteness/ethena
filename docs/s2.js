@@ -316,8 +316,9 @@ async function makeCharts(_mconf) {
 
 		_allsnaps = await VP.getSnapshots(0,10000,1);
 		allsnaps = _allsnaps.slice(0,_allsnaps.length-1);
+		ETHENA_OLD_STATS_SNAP.pop()
 
-		allsnaps = [ ...allsnaps, ...ETHENA_OLD_STATS_SNAP];
+		allsnaps = [ ...ETHENA_OLD_STATS_SNAP , ...allsnaps.reverse(), ];
 
 		allsnaps=allsnaps.map(i=>i.map((je,ji) => Number(je) / ( ji==0 ? 0.001 : (ji<10 ? 1e18 : 1) ) ) )
 		//console.log({allsnaps,ETHENA_OLD_STATS_SNAP})
