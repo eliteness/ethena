@@ -45,6 +45,7 @@ small {
 	padding: 10px 5%;
 }
 .topnav-left-text {
+    font-weight: bold;
 	display: none;
 }
 @media(min-width:641px) {
@@ -56,8 +57,8 @@ small {
     color: white;
     text-decoration: none;
     font-size: 1.2em;
-    font-weight: bold;
 }
+
 .topnav-left img {
     margin-right: 10px;
     height: 32px;
