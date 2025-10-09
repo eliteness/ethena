@@ -16,7 +16,7 @@
             	</a>
             	<a class="topnav-left-text" href="https://eliteness.network">ELITENESS・NETWORK</a>
         	</div>
-    		<div><a href="./">Mint</a></div>o
+    		<div><a href="./">Mint</a></div>
     		<div><a href="./staking">Stake</a></div>
     		<div><a href="./vault">Vault</a></div>
     		<div><a href="./split">Redeem</a></div>
@@ -71,8 +71,23 @@
 			<div style="margin-top: -25px;" align="center">
 				<button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Select your veNFT</span></button>
 				<br><br>
+				<span style="font-size:1.25em;font-family:light">Minting 1 eTHENA per <span id="mintrate">?</span> veTHE
+				<br>Includes Minting Fee <span id="mint-fee"></span> = 2x Dominance</span>
+				<br><br>
 			</div>
 		</div>
+
+		<div class="topstats">
+            <div class="topstat">
+                <div id="topstat-dominance"> ?x </div>
+                <div>eTHENA Dominance</div>
+            </div>
+            <div class="topstat">
+                <div id="topstat-tvl">$-.--</div>
+                <div>Total veTHE Deposited</div>
+            </div>
+        </div>
+
 
 
 	<div id="note" class="overlay">
@@ -98,9 +113,9 @@
 				<div class="footer-nav-sub-head">Earn Rewards</div>
 				<div><a href="./staking">Earn BNB by Staking (Dynamic APR)</a></div>
 				<div><a href="./vault">stakeTHENA: Auto-Compounding ERC4626 Vault</a></div>
-				<div><a href="ttps://app.spectra.finance/fixed-rate/sonic:0xdb1945065a66b30c6d587c3600876db3e5ffeb85" target="_blank">Get Fixed-Yield (Guaranteed Constant APR)</a></div>
-				<div><a href="https://app.spectra.finance/pools/sonic:0xdb1945065a66b30c6d587c3600876db3e5ffeb85" target="_blank">Deposit eTHENA to Earn eTHENA + SPECTRA + Fixed-Yield + Trade Fees on Spectra Liquidity</a></div>
-				<div><a href="ttps://app.spectra.finance/trade-yield/sonic:0xdb1945065a66b30c6d587c3600876db3e5ffeb85" target="_blank">Yield Trading: Earn by betting if APR will increase or decrease</a></div>
+				<div><a href="ttps://app.spectra.finance/fixed-rate/sonic:0x1664c1fe5231aeb3ce423114dc67ce27ff0ca913" target="_blank">Get Fixed-Yield (Guaranteed Constant APR)</a></div>
+				<div><a href="https://app.spectra.finance/pools/sonic:0x1664c1fe5231aeb3ce423114dc67ce27ff0ca913" target="_blank">Deposit eTHENA to Earn eTHENA + SPECTRA + Fixed-Yield + Trade Fees on Spectra Liquidity</a></div>
+				<div><a href="ttps://app.spectra.finance/trade-yield/sonic:0x1664c1fe5231aeb3ce423114dc67ce27ff0ca913" target="_blank">Yield Trading: Earn by betting if APR will increase or decrease</a></div>
 			</div>
 			<div class="footer-nav-sub">
 				<div class="footer-nav-sub-head">Liquidity Farming</div>
@@ -185,16 +200,19 @@
 			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
-			<script src="e2.js"></script>
+			<script src="e.js"></script>
 			<script>
 				CHAINID = 56;
 				RPC_URL = "https://bsc-dataseed.bnbchain.org";//"https://binance.llamarpc.com";
 				EXPLORE = "https://bscscan.com";
 				CHAIN_NAME = "Binance Smart Chain Mainnet";
 				CHAIN_GAS = "BNB";
+
 				VENFT = "0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D";
 				VENAME = "veTHE";
-				VENAMM = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
+				VENAMM_1 = "0x39E3CA118DDFEa3edC426b306b87F43Da3251b4a";
+				VENAMM = "0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c";
+
 				POOLID = "v0.1.3";
 				BASENAME = "THE";
 				BASE = "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11";
@@ -207,6 +225,7 @@
 				WRAPLOGO = "https://ftm.guru/icons/ethena.png";
 				ID = 2714;
 				VOTER = "0x62Ee96e6365ab515Ec647C065c2707d1122d7b26";
+				MANAGER = "0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c";
 			</script>
 	</body>
 </html>
